@@ -1,0 +1,271 @@
+<div class="content-inner-wrapper">
+<div class="row">
+    <div class="col col-sm-7">
+        <div class="main_title">List of Schedules</div>
+    </div>
+</div>
+
+<!-- Availability add edit dialogue  -->
+<p-dialog header="{{setHeadMode}}" id="noScrollBar" class="modalsetavailability" [(visible)]="availabilityDisplay"
+    closeOnEscape="true" (onHide)="closeDialog()" [modal]="true" [responsive]="true" [width]="800" [minWidth]="500"
+    [minY]="70" [maximizable]="true" [baseZIndex]="10000">
+
+    <div class="row availability-component-section">
+        <div class="col col-sm-12">
+
+            <form class="addUser-form" [formGroup]="addAvailabilityForm">
+
+                <div class="form-row">
+                    <div class="col-md-12 mb-3" style="display: flex;">
+                        <label class="cusLable">Schedule Name: </label>
+                        <input id="Availability Name " type="text" class="form-control input-md  avilabilityinput"
+                            formControlName="avialability_name">
+
+                        <p class="form_error"
+                            *ngIf="addAvailabilityForm.controls['avialability_name'].dirty && addAvailabilityForm.controls['avialability_name'].hasError('required')">
+                            Please enter Schedule Name.</p>
+                        <p class="form_error"
+                            *ngIf="addAvailabilityForm.controls['avialability_name'].hasError('maxlength')">You can add
+                            only 25 character.</p>
+                        <p class="form_error"
+                            *ngIf="addAvailabilityForm.controls['avialability_name'].hasError('minlength')&& !addAvailabilityForm.controls['avialability_name'].hasError('required')">
+                            Minimum 2 charater required.</p>
+                        <p class="form_error"
+                            *ngIf="addAvailabilityForm.controls['avialability_name'].dirty && addAvailabilityForm.controls['avialability_name'].hasError('pattern') && !addAvailabilityForm.controls['avialability_name'].hasError('required')&& !addAvailabilityForm.controls['avialability_name'].hasError('minlength')">
+                            Please enter Schedule Name</p>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-12 col-md-6 mb-3" *ngIf="checkAccess.staff">
+                        <label class="lbg">Select staff :</label>
+                        <p-dropdown [options]="filterGetStaffList" [filter]="true" class="input-md wid100 pdropdown"
+                            formControlName="staff" (onChange)="staffFilterChange($event)"></p-dropdown>
+
+                        <div
+                            *ngIf="addAvailabilityForm.controls['staff'].dirty && addAvailabilityForm.controls['staff'].invalid">
+                            <p class="form_error"
+                                *ngIf="addAvailabilityForm.controls['staff'].dirty && addAvailabilityForm.controls['staff'].hasError('required')">
+                                Please select staff.</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="form-row">
+                    <div class="col-12 col-lg-6 mb-3">
+                        <label class="cusLable">Start Date:</label>
+
+                        <p-calendar [(ngModel)]="startDate" formControlName="startDate" dateFormat="mm-dd-yy"
+                            [showIcon]="true" [style]="" (onFocus)="restrictStartDate()" [minDate]="minimumStartDate"
+                            [disabledDates]="invalidDates"></p-calendar>
+                        <div
+                            *ngIf="addAvailabilityForm.controls['startDate'].dirty && addAvailabilityForm.controls['startDate'].invalid">
+                            <p class="form_error"
+                                *ngIf="addAvailabilityForm.controls['startDate'].dirty && addAvailabilityForm.controls['startDate'].hasError('required')">
+                                Please select start date.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 mb-3">
+                        <label class="cusLable">End Date:</label>
+                        <p-calendar [(ngModel)]="endDate" id="caledID" formControlName="endDate" dateFormat="mm-dd-yy"
+                            [minDate]="minimumDate" [showIcon]="true" [style]="" (onFocus)="selectEndDate()"
+                            [disabledDates]="invalidDates" s></p-calendar>
+                        <div
+                            *ngIf="addAvailabilityForm.controls['endDate'].dirty && addAvailabilityForm.controls['endDate'].invalid">
+                            <p class="form_error"
+                                *ngIf="addAvailabilityForm.controls['endDate'].dirty && addAvailabilityForm.controls['endDate'].hasError('required')">
+                                Please select end date.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-12 col-lg-6 mb-3">
+                        <label class="cusLable">Start Time:</label>
+                        <p-calendar [(ngModel)]="startTime" formControlName="startTime" hourFormat="12"
+                            [timeOnly]="true" [showIcon]="true" [icon]="'pi pi-clock'" [style]="" (onFocus)="initialTime()"
+                            (onSelect)="currentTime1()"></p-calendar>
+                        <div
+                            *ngIf="addAvailabilityForm.controls['startTime'].dirty && addAvailabilityForm.controls['startTime'].invalid">
+                            <p class="form_error"
+                                *ngIf="addAvailabilityForm.controls['startTime'].dirty && addAvailabilityForm.controls['startTime'].hasError('required')">
+                                Please select start time.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 mb-3">
+                        <label class="cusLable">End Time:</label>
+                        <p-calendar [(ngModel)]="endTime" formControlName="endTime" hourFormat="12" [timeOnly]="true"
+                         [showIcon]="true" [icon]="'pi pi-clock'" [style]="" (onFocus)="initialTime2()" (onSelect)="currentTime2()">
+                        </p-calendar>
+                        <div
+                            *ngIf="addAvailabilityForm.controls['endTime'].dirty && addAvailabilityForm.controls['endTime'].invalid">
+                            <p
+                                *ngIf="addAvailabilityForm.controls['endTime'].dirty && addAvailabilityForm.controls['endTime'].hasError('required')">
+                                Please select end time.</p>
+                        </div>
+                        <div *ngIf="error.isError">
+                            <p class="form_error"> {{ error.errorMessage }}</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-12 col-lg-6 mb-3 locationphysician">
+                        <label class="cusLable">Select Appointment Duration:</label>
+                        <p-dropdown [options]="availability_duration_time" class="input-md pdropdown"
+                            formControlName="availability_duration" [style]="{'width':'100%','height':'38px'}">
+                        </p-dropdown>
+                        <p class="form_error"
+                            *ngIf="addAvailabilityForm.controls['availability_duration'].dirty && addAvailabilityForm.controls['availability_duration'].hasError('required')">
+                            Please Select Appointment Duration.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+                    <div class="col-12 col-lg-12 mb-3">
+                        <div formGroupName='week'>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="mycheckbox">Sunday
+                                            <input type="checkbox" formControlName='sun'>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="mycheckbox">Monday
+                                            <input type="checkbox" formControlName='mon'>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="mycheckbox">Tuesday
+                                            <input type="checkbox" formControlName='tue'>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="mycheckbox">Wednesday
+                                            <input type="checkbox" formControlName='wed'>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="mycheckbox">Thursday
+                                            <input type="checkbox" formControlName='thur'>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="mycheckbox">Friday
+                                            <input type="checkbox" formControlName='fri'>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="mycheckbox">Saturday
+                                            <input type="checkbox" formControlName='sat'>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+                    <div class="col-lg-12">
+                        <button type="button" (click)="addMultiBreakTime()" class="btn btn-sm btn-bluedark addUserBtn">
+                            Add break-time
+                        </button>
+                    </div>
+                </div>
+
+
+                <div formArrayName="breakTime"
+                    *ngFor="let item of addAvailabilityForm.get('breakTime')['controls']; let i = index;">
+                    <div [formGroupName]="i" class="row">
+                        <div class="col-6 col-lg-5 m-b-3">
+                            <label class="cusLable disBLock">Break start time:</label>
+                            <p-calendar formControlName="startBreakTime" hourFormat="12" [timeOnly]="true" 
+                                [showIcon]="true" [icon]="'pi pi-clock'" (onFocus)="initialTime3()" (onSelect)="checkValidBreakTime(i)"
+                                [readonlyInput]="true" [style]="{'width':'100%'}"></p-calendar>
+                            <!-- <tn-form-error
+                                [control]="addAvailabilityForm.get('breakTime').controls[i].get('startBreakTime')">
+                            </tn-form-error> -->
+
+                        </div>
+                        <div class="col-6 col-lg-5 m-b-3">
+                            <label class="cusLable disBLock">Break end time:</label>
+                            <p-calendar formControlName="endBreakTime" hourFormat="12" [timeOnly]="true"
+                             [showIcon]="true" [icon]="'pi pi-clock'" (onFocus)="initialTime3()" (onSelect)="checkValidBreakTime(i)"
+                                [readonlyInput]="true" [style]="{'width':'100%'}"></p-calendar>
+                            <p class="form_error">
+                                {{ getValidity(i) }}
+                            </p>
+
+                            <!-- <tn-form-error
+                                [control]="addAvailabilityForm.get('breakTime').controls[i].get('endBreakTime')">
+                            </tn-form-error> -->
+
+                        </div>
+                        <div style="display: flex; align-items: flex-end;">
+                            <button style="margin-bottom: 0;" type="button" (click)="removeMultiBreakTime(i)"
+                                class="btn btn-sm btn-bluedark addUserBtn addBtn">
+                                X
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div [ngClass]="{'spinner' : isAvailabilityLoading}">
+    </div>
+    <p-footer>
+        <div class="col-lg-12 mb15 text-right">
+            <!-- <button type="button" (click)="addAvalability()" class="btn btn-sm btn-bluedark addUserBtn">
+            EDIT
+            </button> -->
+        </div>
+    </p-footer>
+</p-dialog>
+
+
+<!-- Availability delete conformation dialogue -->
+<!-- <p-dialog header="Delete Confirmation " [(visible)]="displayDelete" [modal]="true" [responsive]="true" [width]="350"
+    [minWidth]="200" [minY]="70" [maximizable]="false" [baseZIndex]="10000">
+    <span>
+        <span class="fa fa-info-circle fa-lg mr-2"></span>Are you really want to delete this Availability?
+        <br>
+    </span>
+    <br>
+    <p-footer>
+        <button type="button" class="btn btn-primary" (click)="deleteAvailability()">
+            Yes</button>
+        <button type="button" class="btn btn-primary " (click)="displayDelete = false;">
+            No</button>
+    </p-footer>
+</p-dialog> -->
+</div>

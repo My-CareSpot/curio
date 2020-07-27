@@ -1,0 +1,25 @@
+.login-section-inner {
+  display: flex;height: 100vh;
+  flex-wrap: wrap;
+ 
+
+  .login-right {
+    border: 1px solid #F7F7F7;background: #1B82D4;padding: 100px;    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .register-Left {
+    border: 1px solid #F7F7F7;background: #F7F7F7;   display: flex;
+    justify-content: center;color: #1B82D4;
+    align-items: center;
+  font-size: 50px;
+   
+  }
+  button{background:  #1B82D4;}
+  .sign-up{color: #1B82D4;cursor: pointer;}
+  form{padding: 20px;}
+  .pt10{padding-top: 10px;}
+  .forget-password{color: rgba(0,0,0,.87);cursor: pointer;}
+  .mat-checkbox-background{background: #1B82D4;}
+}
+

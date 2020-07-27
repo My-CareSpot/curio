@@ -1,0 +1,25 @@
+.thankYouPage {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .card {
+    box-shadow: 0px 2px 2px lightgray;
+
+    padding: 8em;
+
+    .heading {
+      font-size: 6em;
+      color: skyblue;
+    }
+    h3 {
+      color: skyblue;
+      text-align: center;
+    }
+  }
+}

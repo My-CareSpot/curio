@@ -1,0 +1,30 @@
+.next-btn{
+    background: #1B82D4;
+    color: #fff!important;
+    border: none !important;
+    border-radius: 4px;
+    width: auto;
+    cursor: pointer;
+    height: 45px;
+}
+.next-btn:hover{background: #094d85;}
+
+.back-btn{background: #ACB0BF;
+    color: #fff!important;
+    border: none !important;
+    border-radius: 4px;
+    width: auto;margin-right: 10px;
+    cursor: pointer;
+    height: 45px;}
+
+    .back-btn:hover{background: rgb(78, 79, 83);}
+
+.submit-btn{background: #1B82D4;
+    color: #fff!important; 
+    border: none !important;
+    border-radius: 4px;
+    width: auto;
+    cursor: pointer;
+    height: 45px;}
+.submit-btn:hover{background: #094d85;}
+.center-button{text-align: center;padding-top:30px;}

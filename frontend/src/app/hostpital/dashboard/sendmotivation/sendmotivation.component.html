@@ -1,0 +1,103 @@
+<div class="content-inner-wrapper">
+  <h2>Send Motivation</h2>
+
+  <div class="card">
+    <form [formGroup]="motivationForm">
+      <div class="row">
+        <div class="col-sm-4">
+          <mat-form-field class="w-60" style="width: 100%;">
+            <mat-label>Title</mat-label>
+            <input matInput placeholder="" formControlName="title" />
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-4">
+          <mat-form-field class="w-60" style="width: 100%;">
+            <mat-label>Motivational Quote</mat-label>
+            <input matInput placeholder="Quotes" formControlName="motivation" />
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-4">
+          <mat-form-field style="width: 100%;">
+            <mat-label>Select Patient</mat-label>
+            <mat-select formControlName="patient_ids" multiple>
+              <mat-option
+                *ngFor="let item of patientList"
+                [value]="item.user_id"
+                >{{ item.firstName }} {{ item.lastName }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+          <!-- <md-content layout-padding>  
+                <md-select ng-model="usersModel" multiple>
+                <md-option ng-value="user" ng-repeat="user in users">{{ user.name }}</md-option>
+              </md-select>
+               <p>Selected Options = {{usersModel}}</p>
+              </md-content> -->
+        </div>
+        <div class="col-sm-12 text-center">
+          <button
+            class="mat-raised-button save-btn-modal"
+            (click)="submitMotivation(motivationForm.value)"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div style="margin-top: 10px;"></div>
+  <div class="table-responsive example-container mat-elevation-z8">
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      class="mat-elevation-z8 conditions_alignment_tab"
+      matSort
+    >
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+        <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="motivation">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Motivation Message
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.motivation }}</td>
+      </ng-container>
+      <ng-container matColumnDef="assignedUser">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Patient Name
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <ul>
+            <li *ngFor="let x of element.userInfo">{{ x.fullName }}</li>
+          </ul>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="createdAt">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Created At
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.createdAt | date }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <!-- <mat-paginator
+      [length]="totalCount"
+      [pageSize]="defaultCount"
+      [pageSizeOptions]="paginate"
+      showFirstLastButtons
+      (page)="paginatePage($event)"
+    >
+    </mat-paginator> -->
+  </div>
+</div>

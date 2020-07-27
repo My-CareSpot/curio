@@ -1,0 +1,32 @@
+<aside class="sidebar-parent">
+    <!-- <div class="logo-sidebar">CURIO</div> -->
+    <ul id="slimScrollSuperAdimContainer">  
+          <li>
+            <a              
+              [routerLink]="['/admin/dashboard/admin-business']"
+              routerLinkActive="router-link-active"
+            >
+              <span class="menu-sidebar"
+                ><i class="fa fa-h-square" aria-hidden="true"></i>
+                &nbsp;&nbsp;&nbsp;Hospital</span
+              >
+            </a>
+          </li>
+          <li *ngIf="isSuperAdmin">
+            <a              
+              [routerLink]="['/admin/dashboard/sub-admin']"
+              routerLinkActive="router-link-active"
+            >
+              <span class="menu-sidebar"
+                ><i class="fa fa-user-secret" aria-hidden="true"></i>
+                &nbsp;&nbsp;&nbsp;Sub Admin</span
+              >
+            </a>
+          </li>
+        </ul> 
+  </aside>
+<!--   
+  <div class="tooltip-outer" id="tooltipContainer">
+    <span id="tooltipTxt"></span>
+  </div> -->
+  

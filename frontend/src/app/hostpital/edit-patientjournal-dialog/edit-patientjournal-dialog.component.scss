@@ -1,0 +1,17 @@
+.mat-form-field {
+    display: block;
+  }
+
+  .remove {
+    background: #4e4f53;
+    color: #fff;
+    border-radius: 4px;
+    margin-left: 5px !important;
+    border: none !important;
+    width: auto;
+    cursor: pointer;
+    height: 45px;
+  }
+
+  .remove:hover{background: black ;
+    color: #fff;}

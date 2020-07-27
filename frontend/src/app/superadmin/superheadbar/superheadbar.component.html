@@ -1,0 +1,101 @@
+<header class="dashboard-header">
+    <div class="logo-sidebar"><img src="../../../assets/img/Logo.svg" /></div>
+    <i class="hamburger" (click)="toggleSidebar()"
+      ><img src="../../../assets/img/Hamburger.svg"
+    /></i>
+    <ul>
+        <li>
+        <div class="dropdown">
+          <button
+            type="button"
+            class="btn dropdown-toggle"
+            data-toggle="dropdown"
+            (click)="showLogout()"
+          >
+            {{ userData?.firstName }}
+          </button>
+          <div class="dropdown-menu" id="dropDown">
+            <a class="dropdown-item" (click)="logout()">
+              <i class="fa fa-power-off" aria-hidden="true"></i>
+              Sign Out
+            </a>
+            <a class="dropdown-item" (click)="isChangePassword=true">
+              <i class="fa fa-sign-out" aria-hidden="true"></i>
+              Change Password
+            </a>
+          </div>
+        </div>
+       </li>
+  
+      <li>
+        <a (click)="openProfile()" class="last-child"
+          ><img src="../../../assets/img/Avatar.png"
+        /></a>
+      </li>
+    </ul>
+  </header>  
+
+  <div class="overlay" *ngIf="isChangePassword">
+    <div class="maincontent col-lg-5 col-md-5 col-sm-12">
+      <div class="headerOverlay">
+        <h3>Change Password</h3>
+      </div>
+      <form [formGroup]="changePasswordForm" style="padding: 5px;">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <mat-form-field>
+            <mat-label>Enter Password </mat-label>
+            <input
+              matInput
+              placeholder="Password"
+              formControlName="password"
+              required
+            />
+            <div
+              *ngIf="password.invalid && (password.dirty || password.touched)"
+              class="alert alert-danger"
+            >
+              <div *ngIf="password.errors.required">
+                Password is required.
+              </div>
+              <div *ngIf="password.errors.minlength">
+                Password must be at least 8 characters long.
+              </div>
+              <div *ngIf="password.errors.pattern">
+                Password must be alphanumeric.
+              </div>
+            </div>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <mat-form-field>
+            <mat-label>Confirm Password </mat-label>
+            <input
+              matInput
+              type="password"
+              placeholder="Confirm Password"
+              formControlName="confirmpassword"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div
+          *ngIf="showPasswordError"
+          style="color: red; font-size: 12px; padding-left: 15px;"
+        >
+          Password do not match
+        </div>
+  
+        <div>
+          <button
+            class="btn-update"
+            [disabled]="isValidForm"
+            (click)="changePassword(changePasswordForm.value)"
+          >
+            Change
+          </button>
+          <button class="btn-update" (click)="cancelDialog()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+ 

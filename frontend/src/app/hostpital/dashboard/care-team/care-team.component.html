@@ -1,0 +1,60 @@
+<div class="content-inner-wrapper">
+  <h2>Care List</h2>
+  <div class="add-member">
+    <div class="col-sm-12 text-right">
+      <button
+        type="button"
+        routerLink="/dashboard/care-member-registation"
+        class="btn btn-add-con"
+      >
+        + Add Member
+      </button>
+    </div>
+  </div>
+  <div class="">
+    <div class="col-sm-12">
+      <table class="table">
+        <thead>
+          <th>First Name</th>
+          <th>Middle Name</th>
+          <th>Last Name</th>
+          <th>Gender</th>
+          <th>Phone Number</th>
+          <th>Email</th>
+          <th>Profession</th>
+          <th>Status</th>
+          <th>Action</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of patientsList">
+            <td>{{ item.firstName }}</td>
+            <td>{{ item.middleName }}</td>
+            <td>{{ item.lastName }}</td>
+            <td>{{ item.gender }}</td>
+            <td>{{ item.phoneNumber }}</td>
+            <td>{{ item.email }}</td>
+            <td>{{ item.profession }}</td>
+            <td>
+              <span class="green_bg" *ngIf="item.islive"></span>
+              <span class="red_bg" *ngIf="!item.islive"></span>
+            </td>
+            <td>
+              <i
+                class="fa fa-pencil-square-o edit-icon"
+                (click)="openEditCaretaker('edit', item)"
+                aria-hidden="true"
+              ></i>
+
+              <i
+                class="fa fa-trash delete-icon"
+                (click)="deleteAlert(item.caretaker_user_id)"
+              ></i>
+              <!-- <span  class="material-icons icon-image-preview blue cursor"  (click)="openEditCaretaker('edit', item)">create</span>&nbsp;
+                      <span  class="material-icons icon-image-preview red cursor" (click)=deleteAlert(item._id)>delete</span> -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

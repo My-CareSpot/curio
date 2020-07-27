@@ -1,0 +1,242 @@
+<div class="content-inner-wrapper">
+  <h2>Patient List</h2>
+
+  <div class="search-patient">
+    <mat-form-field>
+      <input matInput placeholder="Search" />
+    </mat-form-field>
+    <div class="btn-se">
+      <button type="submit" class="btn btn-add-con" (click)="openDialog()">
+        + Add Patient
+      </button>
+      <button
+        type="submit"
+        class="btn btn-add-con regBtn"
+        (click)="registerPatient()"
+      >
+        + Register Patient
+      </button>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 conditions_alignment_tab" matSort>
+
+            <ng-container matColumnDef="Name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="DM">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> DM </th>
+                <td mat-cell *matCellDef="let element"> {{element.DM}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="HT">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> HT </th>
+                <td mat-cell *matCellDef="let element"> {{element.HT}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="CAD">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> CAD </th>
+                <td mat-cell *matCellDef="let element"> {{element.CAD}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Next_Contact">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Next Contact </th>
+                <td mat-cell *matCellDef="let element"> {{element.Next_Contact}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Status">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                <td mat-cell *matCellDef="let element"> 
+                    <span class="green_bg" *ngIf="element.Status"></span>
+                    <span class="red_bg" *ngIf="!element.Status"></span>
+                 </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Pre-Visit">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Pre-Visit </th>
+                <td mat-cell *matCellDef="let element"> {{element.Pre-Visit}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Visit">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Visit </th>
+                <td mat-cell *matCellDef="let element"> {{element.Visit}} </td>
+            </ng-container>
+
+             <ng-container matColumnDef="Between">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Between </th>
+                <td mat-cell *matCellDef="let element"> {{element.Between}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="PCP">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> PCP </th>
+                <td mat-cell *matCellDef="let element" class="edit-open-img text-left"> {{element.PCP}} </td>
+            </ng-container>
+            
+
+             <ng-container matColumnDef="Action">
+                <th mat-header-cell *matHeaderCellDef> Actions </th>
+                <td mat-cell *matCellDef="let element" class="edit-open-img text-center">
+                        <button  class="mat-raised-button mat-primary"  (click)="openDialogforAssignPatient('edit', element)"
+                       >Assign
+                    
+                </button>
+                  
+                  
+     
+                </td>
+            </ng-container> 
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table> -->
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      class="mat-elevation-z8 conditions_alignment_tab"
+      matSort
+    >
+      <ng-container matColumnDef="Name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.firstName | titlecase }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="DM">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.lastName | titlecase }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="HT">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.email }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="CAD">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Gender</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.gender | titlecase }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Next_Contact">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone Number</th>
+        <td mat-cell *matCellDef="let element">{{ element.phoneNumber }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+        <td mat-cell *matCellDef="let element">
+          <span class="green_bg" *ngIf="element.islive"></span>
+          <span class="red_bg" *ngIf="!element.islive"></span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="notification">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Notification
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <mat-slide-toggle
+            (ngModelChange)="changeModel($event, element)"
+            [(ngModel)]="element.isNotificationAble"
+          ></mat-slide-toggle>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Action">
+        <th mat-header-cell *matHeaderCellDef class="action">Actions</th>
+        <td mat-cell *matCellDef="let element" class="edit-open-img text-left">
+          <!-- <button
+            class="mat-raised-button"
+            (click)="openDialogforAssignPatient('edit', element)"
+          > -->
+          <i
+            (click)="openDialogforAssignPatient('edit', element)"
+            class="fa fa-tasks"
+            aria-hidden="true"
+          ></i>
+          <!-- <img src="../../../assets/img/edit.svg"> </button-->
+          &nbsp;&nbsp;
+
+          <!-- <img
+            class="cursor"
+            src="../../../assets/img/eye-open.svg"
+            [routerLink]="['/dashboard/patient-detail', element.user_id]"
+          /> -->
+          <i
+            [routerLink]="['/dashboard/patient-detail', element.user_id]"
+            class="fa fa-eye"
+          ></i
+          >&nbsp;&nbsp;
+          <!-- <span
+            class="material-icons icon-image-preview blue cursor"
+            (click)="openEditCaretaker('edit', element)"
+            >create</span -->
+          <!-- <i
+            class="fa fa-pencil-square-o"
+            (click)="openEditCaretaker('edit', element)"
+            aria-hidden="true"
+          ></i>
+          &nbsp;&nbsp; -->
+          <!-- <span
+            class="material-icons icon-image-preview red cursor"
+            (click)="deleteAlert(element.user_id)"
+            >delete</span -->
+          <i
+            class="fa fa-list-alt"
+            aria-hidden="true"
+            [routerLink]="[
+              '/dashboard/patient-assessment-list',
+              element.user_id
+            ]"
+          ></i>
+          &nbsp;&nbsp;
+          <i
+            class="fa fa-book"
+            aria-hidden="true"
+            [routerLink]="[
+              '/dashboard/patient-journal-list',
+              element.user_id
+            ]"
+          ></i>
+          &nbsp;&nbsp;
+
+          <i
+            class="fa fa-trash delete-icon"
+            (click)="deleteAlert(element.user_id)"
+          ></i>
+          &nbsp;&nbsp;
+
+          <!-- <i
+            class="fa fa-lastfm-square"
+            (click)="openDialogforViewAssignCaretaker('edit', element)"
+          ></i> -->
+
+          <!-- <i class="fa fa-trash"></i> -->
+          <!-- <i class="fa fa-pen" ></i> -->
+          <!-- <i class="fa fa-eye"></i> -->
+          <!-- <i class="fa fa-atlassian"></i> -->
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <mat-paginator
+      [length]="length"
+      [pageSize]="5"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      showFirstLastButtons
+    >
+    </mat-paginator>
+  </div>
+</div>

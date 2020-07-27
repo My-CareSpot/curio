@@ -1,0 +1,860 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker-standalone.css"
+/>
+<div class="content-inner-wrapper">
+  <!-- <div class="content-wrapper"> -->
+  <h2>Set Availability</h2>
+  <div class="spinner-section" *ngIf="loader">
+    <mat-spinner *ngIf="loader"></mat-spinner>
+  </div>
+
+  <div class="card">
+    <div class="wrapper-main-heading">
+      <div class="main-title">
+        <div class="add_new_user">
+          <a class="backLink" title="Back" (click)="goBack()">
+            <i class="material-icons">chevron_left</i> Back
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="common-background">
+      <div class="edit-info">
+        <div class="col-sm-8">
+          <form [formGroup]="setAvailabilityForm" class="example-form">
+            <!-- <div class="row">
+                        <div class="col-sm-6">
+                            <div>
+                                <mat-form-field class="example-full-width required">
+                                    <span matPrefix>
+                                        <i class="material-icons">person
+                                        </i>
+                                    </span>
+                                    <mat-select placeholder="Select location" formControlName="location" (selectionChange)="enableRestOfForm($event)">
+                                        <ng-container *ngIf="specialistLocations.length !== 0">
+                                            <mat-option *ngFor="let location of specialistLocations" [value]="location._id">
+                                                {{ location.locationame }}
+                                            </mat-option>
+                                        </ng-container>
+                                        <mat-option *ngIf="specialistLocations.length == 0">
+                                            <span [routerLink]="['/layout/specialist/profile/profile-view']">click here to add location</span>
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div disabled="isDisabled">
+                                <mat-form-field class="example-full-width required">
+                                    <span matPrefix>
+                                        <i class="material-icons">access_time</i>
+                                    </span>
+                                    <mat-select placeholder="Select duration (in minutes)" formControlName="duration" >
+                                        <mat-option *ngFor="let time of duration" [value]="time">
+                                            {{ time }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div> -->
+            <!--for special offers start-->
+            <!-- <div class="row">
+                        <div class="col-sm-3">
+                            <div class=" required mtbr">
+                                <label class="m10">Special Offers</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 space-btw-inputext">
+                            <label>Date For Special Offer :
+                                <input [min]="min" class="setTime" (ngModelChange)="onDateChange($event)" formControlName="specialDate" [owlDateTime]="dtPicker1" [owlDateTimeTrigger]="dtPicker1" placeholder="Date Time"
+                                    >
+                                <owl-date-time [pickerType]="'calendar'" #dtPicker1 ></owl-date-time>
+                            </label>
+
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="space-btw-inputext required">
+                                <mat-form-field class="example-full-width">
+                                    <span matPrefix>
+                                        <i class="material-icons"> place</i>
+                                    </span>
+                                    <input type="text" formControlName="offerdescp" matInput placeholder="Offer Description">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div> -->
+            <!--for special offers end-->
+
+            <div class="date-time-adja">
+              <div class="row">
+                <div class="col-sm-4">
+                  <label class="bold">Set Availability For </label>
+                </div>
+
+                <div class="col-sm-8">
+                  <label class="position-width">
+                    <mat-form-field style="width: 100%;">
+                      <mat-label>Select Provider</mat-label>
+
+                      <mat-select formControlName="specialist_id">
+                        <mat-option
+                          *ngFor="let item of doctorList"
+                          [value]="item.caretaker_user_id"
+                        >
+                          {{ item.firstName }}
+                          {{ item.lastName }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="date-time-adja">
+              <div class="row">
+                <div class="col-sm-4">
+                  <label class="bold">Business Days </label>
+                </div>
+                <div class="col-sm-4 space-btw-inputext">
+                  <label
+                    >From:
+                    <input
+                      [min]="min"
+                      class="setTime"
+                      style="padding: 0;"
+                      (ngModelChange)="onDateChange($event)"
+                      formControlName="startDate"
+                      [owlDateTime]="dtPicker2"
+                      [owlDateTimeTrigger]="dtPicker2"
+                      placeholder="Date Time"
+                    />
+                    <owl-date-time
+                      [pickerType]="'calendar'"
+                      #dtPicker2
+                    ></owl-date-time>
+                  </label>
+                  <div
+                    class="error-msg"
+                    *ngIf="
+                      setAvailabilityForm.controls['endDate'].touched &&
+                      setAvailabilityForm.controls['endDate'].invalid
+                    "
+                  >
+                    <p
+                      class="form_error"
+                      *ngIf="
+                        setAvailabilityForm.controls['startDate'].touched &&
+                        setAvailabilityForm.controls['startDate'].hasError(
+                          'required'
+                        )
+                      "
+                    >
+                      Please enter startDate
+                    </p>
+                  </div>
+                </div>
+                <div class="col-sm-4 space-btw-inputext">
+                  <label
+                    >To:
+                    <input
+                      [min]="min"
+                      class="setTime"
+                      style="padding: 0;"
+                      formControlName="endDate"
+                      [owlDateTime]="dtPicker3"
+                      [owlDateTimeTrigger]="dtPicker3"
+                      placeholder="Date Time"
+                    />
+                    <owl-date-time
+                      [pickerType]="'calendar'"
+                      #dtPicker3
+                    ></owl-date-time>
+                  </label>
+                  <div
+                    class="error-msg"
+                    *ngIf="
+                      setAvailabilityForm.controls['endDate'].touched &&
+                      setAvailabilityForm.controls['endDate'].invalid
+                    "
+                  >
+                    <p
+                      class="form_error"
+                      *ngIf="
+                        setAvailabilityForm.controls['endDate'].touched &&
+                        setAvailabilityForm.controls['endDate'].hasError(
+                          'required'
+                        )
+                      "
+                    >
+                      Please enter endDate
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+          <form [formGroup]="sundayForm">
+            <label class="title-available">Available Days</label>
+            <div class="row border-bottom">
+              <div class="col-sm-3">
+                <label>Sunday</label>&nbsp;&nbsp;
+                <mat-checkbox
+                  (change)="onDaySelectChange($event, 'sunday')"
+                  formControlName="isChecked"
+                ></mat-checkbox>
+              </div>
+              <div
+                class="col-sm-9 repeat-locations"
+                formArrayName="arrayOfTimings"
+              >
+                <div
+                  class="row"
+                  *ngFor="
+                    let location of multipleSundayTimes.controls;
+                    let i = index
+                  "
+                  [formGroupName]="i"
+                >
+                  <div class="col-sm-5 space-btw-inputext">
+                    <div class="dflex justify-content-left align-items-center">
+                      <label class="w60">From:</label>
+                      <div>
+                        <input
+                          class="setTime"
+                          formControlName="startTime"
+                          [owlDateTime]="dtPicker5"
+                          [owlDateTimeTrigger]="dtPicker5"
+                          placeholder="Time"
+                        />
+                        <owl-date-time
+                          [pickerType]="'timer'"
+                          #dtPicker5
+                        ></owl-date-time>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-5 space-btw-inputext">
+                    <div class="dflex justify-content-left align-items-center">
+                      <label class="w60">To:</label>
+                      <div>
+                        <input
+                          class="setTime"
+                          formControlName="endTime"
+                          [owlDateTime]="dtPicker6"
+                          [owlDateTimeTrigger]="dtPicker6"
+                          placeholder="Time"
+                        />
+                        <owl-date-time
+                          [pickerType]="'timer'"
+                          #dtPicker6
+                        ></owl-date-time>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="addRemoveBtn">
+                    <button
+                      *ngIf="showSundayPlusBtn"
+                      class="smBtn add-location-btn"
+                      (click)="addSundayTimings()"
+                      matTooltip="Add more timings"
+                    >
+                      <i class="material-icons">
+                        add
+                      </i>
+                    </button>
+
+                    <button
+                      *ngIf="i > 0"
+                      class="removeButton"
+                      (click)="deleteSundayTimings(i)"
+                      class="smBtn remove-location-button"
+                      matTooltip="Remove timings"
+                    >
+                      <i class="material-icons">
+                        clear
+                      </i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+          <form [formGroup]="mondayForm">
+            <div class="row border-bottom">
+              <div class="col-sm-3">
+                <label>Monday</label>&nbsp;&nbsp;
+                <mat-checkbox
+                  (change)="onDaySelectChange($event, 'monday')"
+                  formControlName="isChecked"
+                ></mat-checkbox>
+              </div>
+              <div
+                class="col-sm-9 repeat-locations"
+                formArrayName="arrayOfTimings"
+              >
+                <div
+                  class="row"
+                  *ngFor="
+                    let location of multipleMondayTimes.controls;
+                    let i = index
+                  "
+                  [formGroupName]="i"
+                >
+                  <div class="col-sm-5 space-btw-inputext">
+                    <div class="dflex justify-content-left align-items-center">
+                      <label class="w60">From:</label>
+                      <div>
+                        <input
+                          class="setTime"
+                          formControlName="startTime"
+                          [owlDateTime]="dtPicker5"
+                          [owlDateTimeTrigger]="dtPicker5"
+                          placeholder="Time"
+                        />
+                        <owl-date-time
+                          [pickerType]="'timer'"
+                          #dtPicker5
+                        ></owl-date-time>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-5 space-btw-inputext">
+                    <div class="dflex justify-content-left align-items-center">
+                      <label class="w60">To:</label>
+                      <div>
+                        <input
+                          class="setTime"
+                          formControlName="endTime"
+                          [owlDateTime]="dtPicker6"
+                          [owlDateTimeTrigger]="dtPicker6"
+                          placeholder="Time"
+                        />
+                        <owl-date-time
+                          [pickerType]="'timer'"
+                          #dtPicker6
+                        ></owl-date-time>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="addRemoveBtn">
+                    <button
+                      *ngIf="showMondayPlusBtn"
+                      class="smBtn add-location-btn"
+                      (click)="addMondayTimings()"
+                      matTooltip="Add more timings"
+                    >
+                      <i class="material-icons">
+                        add
+                      </i>
+                    </button>
+
+                    <button
+                      *ngIf="i > 0"
+                      class="removeButton"
+                      (click)="deleteMondayTimings(i)"
+                      class="smBtn remove-location-button"
+                      matTooltip="Remove timings"
+                    >
+                      <i class="material-icons">
+                        clear
+                      </i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+          <form [formGroup]="tuesdayForm">
+            <div class="row border-bottom">
+              <div class="col-sm-3">
+                <label>Tuesday</label>&nbsp;&nbsp;
+                <mat-checkbox
+                  (change)="onDaySelectChange($event, 'tuesday')"
+                  formControlName="isChecked"
+                ></mat-checkbox>
+              </div>
+              <div
+                class="col-sm-9 repeat-locations"
+                formArrayName="arrayOfTimings"
+              >
+                <div
+                  class="row"
+                  *ngFor="
+                    let location of multipleTuesdayTimes.controls;
+                    let i = index
+                  "
+                  [formGroupName]="i"
+                >
+                  <div class="col-sm-5 space-btw-inputext">
+                    <div class="dflex justify-content-left align-items-center">
+                      <label class="w60">From:</label>
+                      <div>
+                        <input
+                          class="setTime"
+                          formControlName="startTime"
+                          [owlDateTime]="dtPicker5"
+                          [owlDateTimeTrigger]="dtPicker5"
+                          placeholder="Time"
+                        />
+                        <owl-date-time
+                          [pickerType]="'timer'"
+                          #dtPicker5
+                        ></owl-date-time>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-5 space-btw-inputext">
+                    <div class="dflex justify-content-left align-items-center">
+                      <label class="w60">To:</label>
+                      <div>
+                        <input
+                          class="setTime"
+                          formControlName="endTime"
+                          [owlDateTime]="dtPicker6"
+                          [owlDateTimeTrigger]="dtPicker6"
+                          placeholder="Time"
+                        />
+                        <owl-date-time
+                          [pickerType]="'timer'"
+                          #dtPicker6
+                        ></owl-date-time>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="addRemoveBtn">
+                    <button
+                      *ngIf="showTuesdayPlusBtn"
+                      class="smBtn add-location-btn"
+                      (click)="addTuesdayTimings()"
+                      matTooltip="Add more timings"
+                    >
+                      <i class="material-icons">
+                        add
+                      </i>
+                    </button>
+
+                    <button
+                      *ngIf="i > 0"
+                      class="removeButton"
+                      (click)="deleteTuesdayTimings(i)"
+                      class="smBtn remove-location-button"
+                      matTooltip="Remove timings"
+                    >
+                      <i class="material-icons">
+                        clear
+                      </i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+          <form [formGroup]="wednesdayForm">
+            <div class="row border-bottom">
+              <div class="col-sm-3">
+                <label>Wednesday</label>&nbsp;&nbsp;
+                <mat-checkbox
+                  (change)="onDaySelectChange($event, 'wednesday')"
+                  formControlName="isChecked"
+                ></mat-checkbox>
+              </div>
+              <div
+                class="col-sm-9 repeat-locations"
+                formArrayName="arrayOfTimings"
+              >
+                <div
+                  class="row"
+                  *ngFor="
+                    let location of multipleWednesdayTimes.controls;
+                    let i = index
+                  "
+                  [formGroupName]="i"
+                >
+                  <div class="col-sm-5 space-btw-inputext">
+                    <div class="dflex justify-content-left align-items-center">
+                      <label class="w60">From:</label>
+                      <div>
+                        <input
+                          class="setTime"
+                          formControlName="startTime"
+                          [owlDateTime]="dtPicker5"
+                          [owlDateTimeTrigger]="dtPicker5"
+                          placeholder="Time"
+                        />
+                        <owl-date-time
+                          [pickerType]="'timer'"
+                          #dtPicker5
+                        ></owl-date-time>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-5 space-btw-inputext">
+                    <div class="dflex justify-content-left align-items-center">
+                      <label class="w60">To:</label>
+                      <div>
+                        <input
+                          class="setTime"
+                          formControlName="endTime"
+                          [owlDateTime]="dtPicker6"
+                          [owlDateTimeTrigger]="dtPicker6"
+                          placeholder="Time"
+                        />
+                        <owl-date-time
+                          [pickerType]="'timer'"
+                          #dtPicker6
+                        ></owl-date-time>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="addRemoveBtn">
+                    <button
+                      *ngIf="showWednesdayPlusBtn"
+                      class="smBtn add-location-btn"
+                      (click)="addWednesdayTimings()"
+                      matTooltip="Add more timings"
+                    >
+                      <i class="material-icons">
+                        add
+                      </i>
+                    </button>
+
+                    <button
+                      *ngIf="i > 0"
+                      class="removeButton"
+                      (click)="deleteWednesdayTimings(i)"
+                      class="smBtn remove-location-button"
+                      matTooltip="Remove timings"
+                    >
+                      <i class="material-icons">
+                        clear
+                      </i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+          <form [formGroup]="thursdayForm">
+            <div class="row border-bottom">
+              <div class="col-sm-3">
+                <label>Thursday</label>&nbsp;&nbsp;
+                <mat-checkbox
+                  (change)="onDaySelectChange($event, 'thursday')"
+                  formControlName="isChecked"
+                ></mat-checkbox>
+              </div>
+              <div
+                class="col-sm-9 repeat-locations"
+                formArrayName="arrayOfTimings"
+              >
+                <div
+                  class="row"
+                  *ngFor="
+                    let location of multipleThursdayTimes.controls;
+                    let i = index
+                  "
+                  [formGroupName]="i"
+                >
+                  <div class="col-sm-5 space-btw-inputext">
+                    <div class="dflex justify-content-left align-items-center">
+                      <label class="w60">From:</label>
+                      <div>
+                        <input
+                          class="setTime"
+                          formControlName="startTime"
+                          [owlDateTime]="dtPicker5"
+                          [owlDateTimeTrigger]="dtPicker5"
+                          placeholder="Time"
+                        />
+                        <owl-date-time
+                          [pickerType]="'timer'"
+                          #dtPicker5
+                        ></owl-date-time>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-5 space-btw-inputext">
+                    <div class="dflex justify-content-left align-items-center">
+                      <label class="w60">To:</label>
+                      <div>
+                        <input
+                          class="setTime"
+                          formControlName="endTime"
+                          [owlDateTime]="dtPicker6"
+                          [owlDateTimeTrigger]="dtPicker6"
+                          placeholder="Time"
+                        />
+                        <owl-date-time
+                          [pickerType]="'timer'"
+                          #dtPicker6
+                        ></owl-date-time>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="addRemoveBtn">
+                    <button
+                      *ngIf="showThursdayPlusBtn"
+                      class="smBtn add-location-btn"
+                      (click)="addThursdayTimings()"
+                      matTooltip="Add more timings"
+                    >
+                      <i class="material-icons">
+                        add
+                      </i>
+                    </button>
+
+                    <button
+                      *ngIf="i > 0"
+                      class="removeButton"
+                      (click)="deleteThursdayTimings(i)"
+                      class="smBtn remove-location-button"
+                      matTooltip="Remove timings"
+                    >
+                      <i class="material-icons">
+                        clear
+                      </i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+          <form [formGroup]="fridayForm">
+            <div class="row border-bottom">
+              <div class="col-sm-3">
+                <label>Friday</label>&nbsp;&nbsp;
+                <mat-checkbox
+                  (change)="onDaySelectChange($event, 'friday')"
+                  formControlName="isChecked"
+                ></mat-checkbox>
+              </div>
+              <div
+                class="col-sm-9 repeat-locations"
+                formArrayName="arrayOfTimings"
+              >
+                <div
+                  class="row"
+                  *ngFor="
+                    let location of multipleFridayTimes.controls;
+                    let i = index
+                  "
+                  [formGroupName]="i"
+                >
+                  <div class="col-sm-5 space-btw-inputext">
+                    <div class="dflex justify-content-left align-items-center">
+                      <label class="w60">From:</label>
+                      <div>
+                        <input
+                          class="setTime"
+                          formControlName="startTime"
+                          [owlDateTime]="dtPicker5"
+                          [owlDateTimeTrigger]="dtPicker5"
+                          placeholder="Time"
+                        />
+                        <owl-date-time
+                          [pickerType]="'timer'"
+                          #dtPicker5
+                        ></owl-date-time>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-5 space-btw-inputext">
+                    <div class="dflex justify-content-left align-items-center">
+                      <label class="w60">To:</label>
+                      <div>
+                        <input
+                          class="setTime"
+                          formControlName="endTime"
+                          [owlDateTime]="dtPicker6"
+                          [owlDateTimeTrigger]="dtPicker6"
+                          placeholder="Time"
+                        />
+                        <owl-date-time
+                          [pickerType]="'timer'"
+                          #dtPicker6
+                        ></owl-date-time>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="addRemoveBtn">
+                    <button
+                      *ngIf="showFridayPlusBtn"
+                      class="smBtn add-location-btn"
+                      (click)="addFridayTimings()"
+                      matTooltip="Add more timings"
+                    >
+                      <i class="material-icons">
+                        add
+                      </i>
+                    </button>
+
+                    <button
+                      *ngIf="i > 0"
+                      class="removeButton"
+                      (click)="deleteFridayTimings(i)"
+                      class="smBtn remove-location-button"
+                      matTooltip="Remove timings"
+                    >
+                      <i class="material-icons">
+                        clear
+                      </i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+          <form [formGroup]="saturdayForm">
+            <div class="row border-bottom" style="border: none !important;">
+              <div class="col-sm-3">
+                <label>Saturday</label>&nbsp;&nbsp;
+                <mat-checkbox
+                  (change)="onDaySelectChange($event, 'saturday')"
+                  formControlName="isChecked"
+                ></mat-checkbox>
+              </div>
+              <div
+                class="col-sm-9 repeat-locations"
+                formArrayName="arrayOfTimings"
+              >
+                <div
+                  class="row"
+                  *ngFor="
+                    let location of multipleSaturdayTimes.controls;
+                    let i = index
+                  "
+                  [formGroupName]="i"
+                >
+                  <div class="col-sm-5 space-btw-inputext">
+                    <div class="dflex justify-content-left align-items-center">
+                      <label class="w60">From:</label>
+                      <div>
+                        <input
+                          class="setTime"
+                          formControlName="startTime"
+                          [owlDateTime]="dtPicker5"
+                          [owlDateTimeTrigger]="dtPicker5"
+                          placeholder="Time"
+                        />
+                        <owl-date-time
+                          [pickerType]="'timer'"
+                          #dtPicker5
+                        ></owl-date-time>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-5 space-btw-inputext">
+                    <div class="dflex justify-content-left align-items-center">
+                      <label class="w60">To:</label>
+                      <div>
+                        <input
+                          class="setTime"
+                          formControlName="endTime"
+                          [owlDateTime]="dtPicker6"
+                          [owlDateTimeTrigger]="dtPicker6"
+                          placeholder="Time"
+                        />
+                        <owl-date-time
+                          [pickerType]="'timer'"
+                          #dtPicker6
+                        ></owl-date-time>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="addRemoveBtn">
+                    <button
+                      *ngIf="showSaturdayPlusBtn"
+                      class="smBtn add-location-btn"
+                      (click)="addSaturdayTimings()"
+                      matTooltip="Add more timings"
+                    >
+                      <i class="material-icons">
+                        add
+                      </i>
+                    </button>
+
+                    <button
+                      *ngIf="i > 0"
+                      class="removeButton"
+                      (click)="deleteSaturdayTimings(i)"
+                      class="smBtn remove-location-button"
+                      matTooltip="Remove timings"
+                    >
+                      <i class="material-icons">
+                        clear
+                      </i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="text-center">
+            <button
+              class="next-btn"
+              *ngIf="!isEdit"
+              (click)="setAvailability()"
+            >
+              Add
+            </button>
+            <button
+              class="next-btn"
+              *ngIf="isEdit"
+              (click)="updateAvailability()"
+            >
+              Update
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="availWrapper">
+    <table mat-table [dataSource]="availibilitiesData" class="mat-elevation-z8">
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.firstName }} {{ element.lastName }}
+        </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="start">
+        <th mat-header-cell *matHeaderCellDef>From</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.fromDateTime | date: "mediumDate" }}
+        </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="end">
+        <th mat-header-cell *matHeaderCellDef>To</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.toDateTime | date: "mediumDate" }}
+        </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Action</th>
+        <td mat-cell *matCellDef="let element">
+          <button class="next-btnS" (click)="UpdateCheck(element)">
+            Update
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>

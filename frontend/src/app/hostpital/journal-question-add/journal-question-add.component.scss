@@ -1,0 +1,28 @@
+.back-title{display: flex;justify-content: space-between;align-items: center;}
+.back-title h3{font-size: 20px;color: #333;}
+.mat-icon{cursor: pointer;}
+.add-survey-inner .mat-form-field{width: 100%;}
+.heading-inner h3{font-size: 20px;color: #333;}
+.cursorAll {margin-right: 5px;}
+.card{margin-bottom: 15px;}
+.remove{ 
+  background: #ACB0BF;
+  color: #fff;
+  border-radius: 4px;
+  margin-right: 10px !important;
+  border: none !important;
+  width: auto;
+  cursor: pointer;
+  height: 45px;
+}
+
+.remove:hover{background: #4e4f53;
+  color: #fff;}
+.btn-sec{text-align: right;}
+.btn-sec button{width: 100px;}
+.option-sec .mat-form-field{width: 100%;}
+
+.fields{
+  display:flex;
+  align-items: center;
+}

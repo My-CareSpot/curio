@@ -1,0 +1,84 @@
+<div class="custum-modal">
+        <h2 mat-dialog-title>Edit Caretaker</h2>
+      
+        <div mat-dialog-content [formGroup]="form">
+        
+              <form novalidate [formGroup]="form">
+                  <div class="row timings">
+                      <div class="col-md-6">
+                <mat-form-field class="w-100">
+                  <input matInput placeholder="First Name" formControlName="firstName" />
+                </mat-form-field>
+                      </div>
+                      <div class="col-md-6">
+                <mat-form-field class="w-100">
+                  <input matInput placeholder="Middle Name" formControlName="middleName" />
+                </mat-form-field>
+                </div>
+                </div>
+                <div class="row timings">
+                    <div class="col-md-6">
+                <mat-form-field class="w-100">
+                        <input matInput placeholder="Last Name" formControlName="lastName" />
+                      </mat-form-field>
+                      </div>
+                      <!-- <div class="col-md-6">
+                      <mat-form-field  class="w-100">
+                            <mat-select placeholder="Gender" formControlName="gender">
+                                  <mat-option *ngFor="let item of genderList" [value]="item.value">
+                                    {{ item.name }}
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                              </div> -->
+                              </div>
+                              <div class="row timings">
+                                  <div class="col-md-6">
+                      <mat-form-field class="w-100">
+                            <input matInput placeholder="Phone Number" formControlName="phoneNumber" />
+                          </mat-form-field>
+                          </div>
+                          <!-- <div class="col-md-6">
+                        <mat-form-field  class="w-100">
+                          <mat-select placeholder="Islive" formControlName="islive">
+                                <mat-option *ngFor="let item of isLive" [value]="item.value">
+                                  {{ item.name }}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                            </div> -->
+                            <div class="col-md-6">
+                            <mat-form-field class="w-100">
+                                <mat-select
+                                  placeholder="Phone Country"
+                                  formControlName="phonecountry"
+                                >
+                                  <mat-option *ngFor="let item of countries" [value]="item.code">
+                                    {{ item.name }}
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </div>
+                          </div>
+              </form>
+         
+        </div>
+      
+        <div class="submit_referal">
+          <button
+            class="mat-raised-button close-btn-modal closebtn"
+            (click)="close()"
+          >
+            Close</button
+          >&nbsp;
+      
+          <button
+            [disabled]="form.invalid"
+            class="mat-raised-button  save-btn-modal "
+            (click)="update()"
+          >
+            Save
+          </button>
+        </div>
+      </div>
+      

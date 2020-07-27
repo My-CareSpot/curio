@@ -1,0 +1,47 @@
+<div class="custum-modal">
+  <h2 mat-dialog-title>Assessment Name</h2>
+  <form  class="formStatus">
+    <mat-form-field class="example-full-width">
+      <mat-label>Assessment Name</mat-label>
+      <input matInput placeholder="Assessment Name *"  [(ngModel)]="assignmentName" (keyup)="keupFunc()" name="assignment" />
+    </mat-form-field>
+    <!-- <mat-form-field class="example-full-width">
+      <mat-label>Assessment Name</mat-label>
+      <input type="checkbox" />
+    </mat-form-field> -->
+    <mat-radio-group aria-label="Select an option" name="options" [(ngModel)]="assignmentOption" >
+      <mat-radio-button value="Normal" >Normal Assessment</mat-radio-button>
+      <mat-radio-button value="Screening">Screening Assessment</mat-radio-button>
+    </mat-radio-group>
+  </form>
+
+
+  <div class="submit_referal">
+    <button
+      class="mat-raised-button close-btn-modal closebtn"
+      (click)="close()"
+    >
+      Close</button
+    >&nbsp;
+
+    <button
+      [disabled]="assignmentName == undefined || assignmentName == ''"
+      class="mat-raised-button save-btn-modal"
+      (click)="saveAssignment()"
+    >
+      Save
+    </button>
+  </div>
+
+  <!-- <div class="submit_referal">
+                <button class="btn" style="background: grey;"
+                (click)="close()">
+            Close
+            </button>&nbsp;
+            
+            <button  class="btn btn-primary"
+                (click)="saveAssignment()" [disabled]="assignmentName == undefined || assignmentName == ''">
+            Save
+            </button>
+            </div> -->
+</div>

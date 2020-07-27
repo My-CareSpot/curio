@@ -1,0 +1,45 @@
+<div class="content-inner-wrapper">
+  <h2>Send Group Activity</h2>
+
+  <div class="card">
+    <div class="row">
+      <div class="col-sm-4">
+        <mat-form-field class="w-60" style="width:100%">
+          <mat-label>Title</mat-label>
+          <input matInput placeholder="" formControlName="email" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-sm-4">
+        <mat-form-field class="w-60" style="width:100%">
+          <mat-label>Motivational Quote</mat-label>
+          <input matInput placeholder="" formControlName="email" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-sm-4">
+        <mat-form-field style="width: 100%;">
+          <mat-label>Select Patient</mat-label>
+          <mat-select [formControl]="toppings" multiple>
+            <mat-option *ngFor="let topping of toppingList" [value]="topping">{{
+              topping
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <!-- <md-content layout-padding>  
+                <md-select ng-model="usersModel" multiple>
+                <md-option ng-value="user" ng-repeat="user in users">{{ user.name }}</md-option>
+              </md-select>
+               <p>Selected Options = {{usersModel}}</p>
+              </md-content> -->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <button class="mat-raised-button  save-btn-modal ">
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

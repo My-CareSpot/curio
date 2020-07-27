@@ -1,0 +1,246 @@
+.fixed-search {
+    background: #0062b0;
+    border-radius: 40px 0px 0px 40px;
+    position: fixed;
+    cursor: pointer;
+    right: 0;
+    top: 130px;
+    z-index: 11;
+    padding-top: 10px;
+    text-align: center;
+    width: 63px;
+    height: 50px;
+  }
+  .fixed-search span {
+    display: none;
+  }
+  .videochat {
+    width: 20px;
+    height: 20px;
+  }
+  .search-content {
+    display: none;
+    position: fixed;
+    right: 0;
+    background: #fff;
+    width: 242px;
+    top: 180px;
+    z-index: 11;
+    box-shadow: 0px 0px 13px #c0cedea6;
+    border-radius: 3px 3px 3px 20px;
+    padding: 10px;
+  }
+  
+  .search-content ul {
+    list-style: none;
+    padding: 10px 5px 0px 5px;
+  }
+  .search-content ul li {
+    margin-bottom: 15px;
+  }
+  .search-content ul li a {
+    color: #3d4f62;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .search-content ul li img {
+    margin-right: 10px;
+  }
+  .dashboard-header ul li i {
+    color: #bcbccb;
+  }
+  .no_noti {
+    width: 15px;
+    height: 15px;
+    background: #f44336;
+    z-index: 1;
+    position: absolute;
+    border-radius: 50%;
+    right: 15px;
+    top: 4px;
+    color: #fff;
+    font-size: 10px;
+    line-height: 15px;
+    font-weight: 500;
+  }
+  .dropdown .btn {
+    color: #0062cc;
+    padding: 0;
+    margin-right: 10px;
+  }
+  /* .dropdown .btn::after{border-color:#bcbccb; } */
+  .dropdown .btn:focus {
+    box-shadow: none;
+  }
+  .dropdown .dropdown-item {
+    padding: 0 15px;
+    font-size: 14px;
+  }
+  .dropdown .dropdown-item i {
+    margin-right: 5px;
+  }
+  .dropdown .dropdown-menu {
+    top: 50px !important;
+    left: -50px;
+  }
+  .dropdown .btn:focus {
+    box-shadow: none;
+  }
+  .dropdown .dropdown-item {
+    padding: 0 15px;
+    font-size: 14px;
+  }
+  .dropdown .dropdown-item i {
+    margin-right: 5px;
+  }
+  // .dropdown .dropdown-menu {
+  //   top: 20px !important;
+  // }
+  
+  .numberShow {
+    width: 15px;
+    height: 15px;
+    background: #f44336;
+    z-index: 1;
+    position: absolute;
+    border-radius: 50%;
+    right: 30px;
+    top: 0px;
+    color: #fff;
+    font-size: 10px;
+    line-height: 15px;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+  }
+  .notificationsArea {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    min-height: 225px;
+    max-height: 450px;
+    overflow-y: auto;
+    top: 55px;
+    min-width: 170px;
+    max-width: 190px;
+    .notiy {
+      border: 1px solid lightgray;
+      border-radius: 5px;
+      padding: 2px;
+      margin: 2px;
+      display: flex;
+      flex-direction: column;
+      .title {
+        font-weight: 600;
+        color: black;
+        font-size: 12px;
+        word-break: break-all;
+        font-family: "Courier New", Courier, monospace;
+      }
+  
+      .description {
+        font-weight: 400;
+        font-family: "Courier New", Courier, monospace;
+        color: #666666;
+        font-size: 10px;
+        word-break: break-all;
+      }
+    }
+  }
+
+
+
+  .form-section {
+    padding: 30px 15px;
+  }
+  .form-section form input {
+    height: 50px;
+  }
+  .form-section form {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .form-section .label-bold {
+    font-weight: 500;
+    color: #000;
+  }
+  .overlay {
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .maincontent {
+      background-color: white;
+      padding: 10px;
+      margin: 10px;
+      box-shadow: 0px 2px 2px lightgray;
+      padding-top: 0px;
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+  }
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  #medicalTables {
+    td {
+      width: 20%;
+      font-size: 12px;
+    }
+    th {
+      font-weight: 500;
+      color: #007bff;
+  
+      font-size: 13px;
+    }
+  }
+  .head {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .btn-update {
+    border: 1px solid lightgray;
+    color: white;
+    background-color: #007bff;
+    margin: 5px;
+  }
+  
+  .headerOverlay {
+    color: white;
+    background-color: #007bff;
+    padding: 10px;
+  }
+  
+  .delete-icon {
+    color: #007bff;
+    margin-left: 5px;
+    cursor: pointer;
+  }
+  .edit-icon {
+    color: #007bff;
+    margin-left: 5px;
+    cursor: pointer;
+  }
+  
+  

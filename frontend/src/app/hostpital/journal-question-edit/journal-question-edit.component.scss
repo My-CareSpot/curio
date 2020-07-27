@@ -1,0 +1,35 @@
+.card{padding: 30px 15px;margin-bottom: 15px;}
+.mat-form-field{width: 100%;}
+.page-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.repeat-locations div{display: flex;flex-direction: row;}
+.cursorAll {
+    display: flex;
+}
+.buttonAlign{text-align: center;}
+.update-btn button{background: #1B82D4;
+    color: #fff;
+    margin-left: 5px !important;
+    border: none !important;
+    border-radius: 4px;
+    width: auto;margin-top: 15px;
+    cursor: pointer;
+    height: 45px;
+}
+.update-btn button:hover{background: #094d85;}
+
+.remove button { 
+    background: #ACB0BF;
+    color: #fff;
+    margin-left: 5px !important;
+    border: none !important;
+    border-radius: 4px;
+    width: auto;margin-top: 15px;
+    cursor: pointer;
+    height: 45px;
+  }
+.remove button:hover{background: #4e4f53;
+    color: #fff;}

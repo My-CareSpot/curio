@@ -1,0 +1,267 @@
+.form-section {
+  padding: 30px 15px;
+}
+.form-section form input {
+  height: 50px;
+}
+.form-section form {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form-section .label-bold {
+  font-weight: 500;
+  color: #000;
+}
+#familyTables {
+  td {
+    width: 12.5%;
+    font-size: 12px;
+  }
+  th {
+    font-weight: 500;
+    color: #007bff;
+
+    font-size: 13px;
+  }
+}
+
+#dosageTable {
+  td {
+    width: 16%;
+    font-size: 12px;
+  }
+  th {
+    font-weight: 500;
+    color: #007bff;
+
+    font-size: 13px;
+  }
+  .mat-row:first-child {
+    background-color: pink;
+  }
+}
+.patientProfile {
+  padding: 1em;
+  margin: 10px;
+  .profileImg {
+    display: flex;
+    justify-content: center;
+    img {
+      width: 200px;
+      height: 200px;
+      border: 4px solid #4bb0c2;
+      border-radius: 100px;
+    }
+  }
+  .profileDetail {
+    display: flex;
+    flex-wrap: wrap;
+
+    .labels {
+    }
+    .values {
+    }
+  }
+}
+
+.imagePic {
+  display: flex;
+  justify-content: center;
+}
+
+.edit-profile {
+  position: absolute;
+  top: auto;
+  bottom: 0px;
+  z-index: 2;
+  width: 100%;
+  text-align: center;
+}
+.fileU {
+  opacity: 0;
+  cursor: pointer;
+  position: absolute;
+  z-index: 99;
+  width: 50px;
+}
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border: 5px solid #007eb1;
+  border-radius: 100px;
+}
+.ImageNow {
+  vertical-align: middle;
+  border-style: none;
+  width: 100%;
+  height: 100%;
+  border-radius: 100px;
+}
+table {
+  width: 100%;
+  td {
+    width: 12.5%;
+  }
+}
+.form-section span {
+  color: #1b82d4;
+}
+.form-section .familyWrappers form {
+  padding-top: 30px;
+  border-bottom: none;
+  display: initial;
+  padding: 15px;
+}
+.form-section
+  .familyWrappers
+  form
+  .DOB.mat-form-field-appearance-legacy
+  .mat-form-field-underline {
+  background: none;
+}
+.form-section .familyWrappers form input {
+  height: auto;
+}
+.form-section .familyWrappers form .mat-form-field {
+  width: 100%;
+}
+table {
+  width: 100%;
+  box-shadow: none;
+}
+table td {
+  width: 20%;
+}
+
+table {
+  width: 100%;
+
+  td {
+    width: 25%;
+
+    .accept-bg {
+      background: green;
+      padding: 8px 10px;
+      border-radius: 4px;
+      margin-right: 5px;
+      color: #fff;
+    }
+    .Decline-bg {
+      background: red;
+      padding: 8px 10px;
+      border-radius: 4px;
+      margin-right: 5px;
+      color: #fff;
+    }
+  }
+}
+.red {
+  color: red !important;
+}
+.green {
+  color: green !important;
+}
+
+.familyWrappers {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.from-change {
+  flex-direction: column;
+}
+.headersTab {
+  width: 15%;
+}
+.dosage_section table td {
+  width: 15%;
+}
+.btn-add-con.save-btn {
+  width: auto;
+  padding: 0 20px;
+}
+.overlay {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .maincontent {
+    background-color: white;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0px 2px 2px lightgray;
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+.mat-form-field {
+  width: 100%;
+}
+
+#medicalTables {
+  td {
+    width: 20%;
+    font-size: 12px;
+  }
+  th {
+    font-weight: 500;
+    color: #007bff;
+
+    font-size: 13px;
+  }
+}
+.head {
+  display: flex;
+  justify-content: flex-end;
+}
+.btn-update {
+  border: 1px solid lightgray;
+  color: white;
+  background-color: #007bff;
+  margin: 5px;
+}
+
+#medicationTable {
+  td {
+    width: 16%;
+    font-size: 12px;
+  }
+  th {
+    font-weight: 500;
+    color: #007bff;
+
+    font-size: 13px;
+  }
+}
+
+.headerOverlay {
+  color: white;
+  background-color: #007bff;
+  padding: 10px;
+}
+
+.delete-icon {
+  color: #007bff;
+  margin-left: 5px;
+  cursor: pointer;
+}
+.edit-icon {
+  color: #007bff;
+  margin-left: 5px;
+  cursor: pointer;
+}

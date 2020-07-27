@@ -1,0 +1,34 @@
+.top{
+    margin-top:10px
+}
+
+table {
+    width: 100%;    background: #fff;
+  } 
+  
+  .edit-open-img img{margin-right: 10px;}
+  
+  .conditions_alignment_tab tr td{width:10%;}
+  
+  .card.document-section{padding: 20px 15px;margin-bottom: 15px;}
+  .search-patient{display: flex;align-items: center;
+    justify-content: space-between;}
+.green_bg{background:green;display: block;width: 15px;height: 15px;}
+.red_bg{background: red;display: block;width: 15px;height: 15px;}
+
+.add-member{margin: 20px;}
+
+.red{
+  color:red !important
+}
+.green{
+  color:green !important
+}
+.blue{
+  color:#1B82D4 !important
+}
+.cursor{
+  cursor: pointer;
+}
+.edit-icon{color: #1B82D4;margin-right:10px;position: relative;top: 2px;}
+.delete-icon{color: red;}

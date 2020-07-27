@@ -1,0 +1,89 @@
+.patient-registartion-wrapper {
+  margin-left: 0;
+}
+.card {
+  padding: 30px;
+  margin: 30px 0;
+}
+.card img {
+  width: 70px;
+  height: 70px;
+}
+.mat-form-field {
+  width: 100%;
+}
+.card h4 {
+  padding-top: 5px;
+  font-size: 18px;
+}
+.card p {
+  font-size: 14px;
+}
+.next-btn {
+  background: #1b82d4;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 4px;
+  width: auto;
+  cursor: pointer;
+  height: 45px;
+}
+
+.back-btn {
+  background: #acb0bf;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 4px;
+  width: auto;
+  margin-right: 10px;
+  cursor: pointer;
+  height: 45px;
+}
+
+.back-btn:hover {
+  background: rgb(78, 79, 83);
+}
+
+.submit-btn {
+  background: #1b82d4;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 4px;
+  width: auto;
+  cursor: pointer;
+  height: 45px;
+}
+.removeButton {
+  background: #1b82d4;
+  color: #fff !important;
+  border: none !important;
+  padding: 5px;
+  border-radius: 4px;
+  width: 100px;
+  margin: 5px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+.removeBtn {
+  background: #1b82d4;
+  color: #fff !important;
+  border: none !important;
+  padding: 5px;
+  border-radius: 4px;
+  width: 80px;
+  margin: 5px;
+  margin-left: 25px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background: #094d85;
+}
+.center-button {
+  text-align: center;
+  padding-top: 30px;
+}
+
+.formArea {
+  width: 100%;
+}

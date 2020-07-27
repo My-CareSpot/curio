@@ -1,0 +1,64 @@
+<!-- <div class="content-wrapper"> -->
+<div class="content-inner-wrapper">
+  <section class="content">
+    <div>
+      <div class="spinner-section" *ngIf="loader">
+        <mat-spinner *ngIf="loader"></mat-spinner>
+      </div>
+      <div class="wrapper-main-heading">
+        <div class="main-title">
+          <h2>Calendar</h2>
+          <div class="col-sm-8">
+            <form [formGroup]="selectCareTakerForm">
+              <label class="position-width">
+                <mat-form-field style="width: 100%;">
+                  <mat-label>Select Provider</mat-label>
+
+                  <mat-select formControlName="specialist_id">
+                    <mat-option *ngFor="let item of doctorList" [value]="item">
+                      {{ item.firstName }}
+                      {{ item.lastName }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </label>
+            </form>
+          </div>
+          <div class="add_new_user">
+            <button
+              class="btn-calendar"
+              [routerLink]="['/dashboard/set-availibility']"
+            >
+              <i class="material-icons">person_add</i> Set Availability
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="common-background">
+          <div class="edit-info">
+            <div class="row">
+              <div class="col-sm-12 lawfirm-calendar">
+                <!-- <full-calendar defaultView="dayGridMonth" [plugins]="calendarPlugins" [events]="events"></full-calendar> -->
+                <div class="row">
+                  <div class="col-sm-8 lawfirm-calendar">
+                    <div class="dlegends">
+                      <div class="booked" style="margin: 0 10px 0 0;">
+                        Booked
+                      </div>
+                      <div class="adhoc">Available</div>
+                      <!-- <div class="unavailable">Unavailable</div> -->
+                      <div class="closed">Closed</div>
+                    </div>
+                  </div>
+                </div>
+                <p>&nbsp;</p>
+                <div id="calendar"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

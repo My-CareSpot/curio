@@ -1,0 +1,222 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;background: #F6F5FA; }
+.header .btn-outline-success{color: #fff;border-color: #fff;border-radius: 4px;}
+.header .btn-outline-success:hover{color: #333;background: #fff;}
+.header .btn-outline-success:focus{box-shadow: none!important;}
+.header .btn-outline-success:active{color: #333!important;border-color: #fff!important;background: #fff!important;font-weight: 600;}
+// sidebar css starts here
+@mixin transition{
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+.main-wrapper{position: relative;}
+.main-wrapper:before {
+    content: '';
+    position: absolute;
+    background: #1B82D4;z-index: -1;
+    width: 220px;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+}
+.sidebar-parent{
+    // position: fixed;
+    left: 0;
+    background: #1B82D4;
+    width: 220px;
+    min-height: 100vh;
+    // top: 0;bottom: 0;
+    top: 70px;bottom: 0;
+    float: left;
+    z-index: 2;
+    @include transition;
+
+    ul{list-style: none;padding-left: 0;
+    
+        li{padding: 15px 0;}
+    
+        a{color: #FFFFFF;text-decoration: none;padding: 0 15px;cursor:pointer;display:block;
+          .icon-sidebar{display: inline-block;width: 25px;}
+          .menu-sidebar{display: inline-block;font-size: 14px;font-weight: 300;}
+            // img{margin-right: 10px;}
+        }
+    }
+}
+.sidebar-parent ul li a:hover{color: #fff;}
+.sidebar-parent ul li a img{width: 18px;}
+// .logo-sidebar{font-size: 24px;
+//     color: #fff;
+//     text-align: left;padding-top:10px;
+//     padding-left:15px;padding-bottom: 20px;
+//     margin-bottom: 0;
+//     font-weight: bold;
+   
+//     span{font-size: 20px;}
+// }
+.logo-sidebar{width: 220px;
+   
+    img{width: 70px;height: 70px; }
+}
+.content-wrapper{
+    width: calc(100% - 220px);
+    background: #F6F5FA;
+    float: right;
+    @include transition;
+}
+.content-inner-wrapper{
+    margin-left: 220px;padding: 15px 25px 0 25px ;min-height: calc(100vh - 48px);
+
+    h2{font-size:20px;color: #49494b;font-weight: 500;margin-bottom: 15px;padding-top: 5px;}
+}
+
+.dashboard-header {
+    float: right;display: flex;padding: 5px 15px;align-items: center;
+    // width: calc(100% - 220px);background: #fff;
+    width: calc(100% - 0px);background: #fff;
+    @include transition;
+    position: relative;
+    z-index: 2;
+    ul{width: 100%;text-align:right;margin-bottom:0;
+        li{
+            display: inline-block;
+
+            a{margin-right: 15px;text-decoration: none;
+            img{margin-left: 5px;}
+            }
+            a.last-child{margin-right: 0;}
+        }
+    }
+    i{cursor: pointer;}
+}
+.collapsedSidebar{
+    .main-wrapper:before {width: 70px;}
+    .sidebar-parent{
+        // left: -200px;
+        width: 70px;
+    }
+    // .content-wrapper, .dashboard-header{
+    //     width: calc(100% - 70px);
+    // }
+    .content-wrapper, .dashboard-header{
+        width: calc(100% - 0px);
+    }
+    .footer-login{ width: calc(100% - 70px)!important;}
+    .menu-sidebar{display: none!important;}
+    .logo-sidebar{font-size: 8px;padding-top: 0;}
+    .logo-sidebar span{display: none!important;}
+    .content-inner-wrapper{margin-left: 70px;}
+}
+
+.search-patient {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+
+.btn-se {
+    text-align: right;
+    margin: 20px;
+}
+
+.btn-add-con {
+    background: #1B82D4;
+    color: #fff;
+    border: none;
+    width: 200px;
+    height: 50px;
+}
+.btn-add-con:hover {color:#fff;background: rgb(9, 77, 133);}
+
+.mat-header-cell {
+    color: #333;
+    font-weight: bold;
+    font-size: 16px;
+}
+.edit-open-img .mat-primary{background: #1B82D4;}
+.edit-open-img .mat-primary:hover {color:#fff;background: rgb(9, 77, 133);}
+
+.button-save{padding-top: 20px;text-align: center;}
+.mat-dialog-container{padding: 0!important;overflow: hidden!important;}
+.inner_tab .mat-tab-label{background:#eaebed;border-radius: 50px;margin-right: 10px;opacity: 1;}
+.inner_tab .mat-tab-label.mat-tab-label-active{background: #d48d1b;color: #fff;opacity: 1;}
+.inner_tab {padding: 20px 0;}
+.inner_tab .mat-tab-list{border: none;}
+.inner_tab .mat-tab-label-container{margin-bottom: 15px;}
+.inner_tab.mat-tab-group.mat-primary .mat-ink-bar, .inner_tab.mat-tab-nav-bar.mat-primary .inner_tab.mat-ink-bar{background: none;height: auto;}
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar{background: #d48d1b;height: 3px;}
+.save-btn-modal {
+    background: #1B82D4;
+    color: #fff;
+    border-radius: 4px;
+    margin-left: 5px !important;
+    border: none !important;
+    width: auto;
+    cursor: pointer;
+    height: 45px;
+}
+
+.save-btn-modal:hover{ background: rgb(9, 77, 133);}
+.mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background{background: #1B82D4;}
+.custum-modal{
+    h2{background: #1B82D4;color: #fff;    font-size: 20px;
+        padding: 15px 20px;margin-bottom: 0;
+        font-weight: 500;} 
+         h3{color: #49494b;font-size: 18px;font-weight: 500;}
+
+        .close-btn {
+            position: relative;
+            box-shadow: none;
+            border: none;
+            background: none;
+
+            button {
+                position: absolute;
+                right: 10px;box-shadow: none;
+                bottom: 10px;
+                background: none;
+                color: #fff;
+                border: none;
+                &:focus{outline: none!important;}
+            }
+        }
+    .mat-dialog-content{margin: 0;padding: 0;overflow: hidden;}
+    form{
+        margin-bottom: 10px;
+        padding: 20px;
+    }
+    .submit_referal {
+        text-align: center;
+        padding: 15px 0;
+    
+    .close-btn-modal {
+        background: #ACB0BF;
+        color: #fff;
+        margin-right: 5px !important;
+        border: none !important;
+        width: 80px;    border-radius: 4px;
+        height: 45px;
+    }
+    .close-btn-modal:hover{background: rgb(78, 79, 83);}
+    .save-btn-modal {
+        background: #1B82D4;
+        color: #fff;
+        margin-left: 5px !important;
+        border: none !important;    border-radius: 4px;
+        width: auto;cursor: pointer;
+        height: 45px;
+        &:hover{ background: rgb(9, 77, 133);}
+    }
+  
+}
+}
+

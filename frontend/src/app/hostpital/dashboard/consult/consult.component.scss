@@ -1,0 +1,122 @@
+.video-consult-section {
+  padding-bottom: 20px;
+
+  img {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  button {
+    margin-right: 10px;
+  }
+}
+
+.video-chat-controls {
+  position: relative;
+  bottom: 60px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  left: 10px;
+  z-index: 999;
+}
+.video-display-name {
+  position: relative !important;
+  display: none !important;
+}
+.callcontainer {
+  margin-top: 25px;
+}
+
+.vidyo-rendering-container
+  .media-grid.video-grid
+  .video-container.displayCropped:not(.video-muted).aspectRatioInversed
+  video {
+  object-fit: cover;
+  height: 100%;
+  width: 100% !important;
+  margin-left: 0;
+}
+.video-chat-controls a {
+  display: inline-block;
+  width: 52px;
+  height: 52px;
+  background: url("../../../../assets/img/videochat-icon.png") no-repeat 0 0;
+  margin-right: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.3);
+}
+
+.video-chat-controls a.video.mute {
+  background-position: 0px -80px;
+}
+
+.video-chat-controls a.voice {
+  background-position: -67px 0;
+}
+
+.video-chat-controls a.voice.mute {
+  background-position: -67px -80px;
+}
+
+.video-chat-controls a.disconnect {
+  background-position: -131px -80px;
+}
+
+.video-chat-controls a.connect {
+  background-position: -131px 0;
+}
+
+#sn-main-wrapper {
+  height: 100%;
+}
+.example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.test {
+  color: red !important;
+}
+
+/* .video-chat-controls button {
+  display: inline-block;
+  width: 52px;
+  height: 52px;
+  background: url('../../../assets/images/videochat-icon.png') no-repeat 0 0;
+  margin-right: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 5px 3px rgba(0, 0, 0, .3);
+}
+
+.video-chat-controls button.connect {
+  background-position: -131px 0;
+} */
+
+.callconnect {
+  border-radius: 50% !important;
+  width: 50px !important;
+  height: 50px !important;
+  color: green !important;
+}
+
+.muteConnected {
+  background: white !important;
+}
+
+.muteDisconnect {
+  background: red !important;
+}
+
+.video-chat-controls button {
+  margin-left: 6px;
+  margin-right: 8px;
+}
+
+.prevedClass {
+  background-image: url("../../../../assets/img/noUserImage.jpg") no-repeat 0 0;
+}

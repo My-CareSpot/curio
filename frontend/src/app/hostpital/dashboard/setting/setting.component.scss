@@ -1,0 +1,25 @@
+.settingWrapper {
+  border: 1px solid #007bff;
+  padding: 1em;
+  border-radius: 5px;
+}
+
+.fields {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+
+  label {
+    margin: 0px;
+    margin-right: 10px;
+    width: 15%;
+  }
+  .rangeBar {
+    width: 50%;
+    margin-right: 10px;
+  }
+}
+.setTime {
+  margin-left: 10px;
+  margin-right: 10px;
+}

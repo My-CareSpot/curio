@@ -1,0 +1,47 @@
+<div class="body-wrapper">
+  <app-header></app-header>
+  <div class="main-wrapper">
+    <app-sidebar></app-sidebar>
+
+    <router-outlet></router-outlet>
+  </div>
+  <div class="notificationForCall" *ngIf="isVideoCallNotification">
+    <div class="videoCall">
+      <div class="textV">You are getting a video call from</div>
+      <div class="patientName">{{ videoCallData?.patient_name }}</div>
+      <div class="btnArea">
+        <button class="acceptButton" (click)="acceptVideoCall()">
+          <i class="fa fa-phone" aria-hidden="true"></i>
+        </button>
+        <button class="declineButton" (click)="declineVideoCall()">
+          <i class="fa fa-phone" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="notificationForCall" *ngIf="isMissCallNotification">
+    <div class="mainContent">
+      <div class="text">You missed a video call from</div>
+
+      <div class="text">
+        {{ missCallData?.patient_name }} at
+        <span>{{ atTime }}</span>
+      </div>
+      <div>
+        <button class="btnClose" (click)="closeMissCall()">Close</button>
+      </div>
+    </div>
+  </div>
+  <div class="notificationForCall" *ngIf="isCallDeclined">
+    <div class="mainContent">
+      <div class="text">{{ declineMessage }}</div>
+
+      <div>
+        <button class="btnClose" (click)="closeMissCall()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+</div>

@@ -1,0 +1,47 @@
+
+
+
+<div class="custum-modal ">
+        <h2 mat-dialog-title>View Caretaker List </h2>
+
+<div  class="scroll">
+
+<table  class="table">
+        <thead>
+           
+          <th>First Name</th>
+          <th>Middle Name</th>
+          <th>Last Name</th>
+           <th>Profession</th>
+           <th>Phone Number</th>
+           <th>Email</th>
+        </thead>
+        <tbody >
+          <tr *ngFor="let item of tempCareList ;let i=index" >
+               
+                 
+            <td >{{item.caredata.firstName}}</td>
+            <td >{{item.caredata.middleName}}</td>
+            <td >{{item.caredata.lastName}}</td>
+            <td >{{item.caredata.profession}}</td>
+            <td >{{item.caredata.phoneNumber}}</td>
+            <td >{{item.caredata.email}}</td>
+            
+          </tr>
+        </tbody>
+      </table>
+</div>
+       
+
+   
+            <div class="submit_referal">
+                    <button class="mat-raised-button close-btn-modal"
+                    (click)="close()">
+                Close
+                </button>
+              
+                </div>
+</div>
+
+
+

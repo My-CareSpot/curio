@@ -1,0 +1,43 @@
+.locationphysician{
+    margin-top:15px
+}
+.locationphysicianbottom{
+    margin-bottom:15px
+
+}
+
+.avialabilityname{
+    display: flex;
+    width: 200px
+}
+.form-row-marl { margin-left: 5px; }
+.avilabilityinput{
+    width: 190px
+}
+
+.paginator{
+    margin-top: -20px
+}
+.form-row {
+    justify-content: space-between;
+    align-items: flex-end;
+    text-align: left;
+    .form-group {
+        margin-right: 10px;
+    }
+}
+.addUserBtn{
+    float: right;
+    margin-bottom: 0px;
+    padding: 10px 15px;
+    background: #024da2;
+    color: #ffffff;
+    border-radius: 30px;
+}
+.dBlock {
+    display: block;
+}
+.cusLable {
+    margin-right: 10px;
+    margin-top: 7px;
+}

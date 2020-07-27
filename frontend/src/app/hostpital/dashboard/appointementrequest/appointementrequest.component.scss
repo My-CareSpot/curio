@@ -1,0 +1,135 @@
+.dashboard-section {
+  .box-patient {
+    background: #effffe;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.02);
+    border-radius: 10px;
+
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0;
+    }
+    p {
+      font-size: 50px;
+      margin: 0;
+
+      img {
+        width: 60px;
+        margin-right: 10px;
+        border-right: 1px solid #000;
+        padding-right: 10px;
+      }
+    }
+  }
+
+  .box-appointment {
+    background: #fdf5ee;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.02);
+    border-radius: 10px;
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0;
+    }
+    p {
+      font-size: 50px;
+      margin: 0;
+    }
+    img {
+      width: 60px;
+      margin-right: 10px;
+      border-right: 1px solid #000;
+      padding-right: 10px;
+    }
+  }
+
+  .box-availabiity {
+    background: #3f50e6;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.02);
+    border-radius: 10px;
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0;
+      color: #fff;
+    }
+    p {
+      font-size: 50px;
+      margin: 0;
+      color: #fff;
+    }
+  }
+}
+
+.appointment-request-section {
+  padding-top: 30px;
+  h3 {
+    color: #49494b;
+    font-weight: 500;
+    font-size: 18px;
+  }
+  table {
+    width: 100%;
+
+    th {
+      .mat-sort-header-container {
+        .mat-sort-header-button {
+          white-space: nowrap !important;
+        }
+      }
+    }
+
+    td {
+      width: 10%;
+
+      .accept-bg {
+        background: green;
+        padding: 8px 10px;
+        border-radius: 4px;
+        margin-right: 5px;
+        color: #fff;
+      }
+      .Decline-bg {
+        background: red;
+        padding: 8px 10px;
+        border-radius: 4px;
+        margin-right: 5px;
+        color: #fff;
+      }
+    }
+  }
+}
+.cursor {
+  cursor: pointer;
+}
+
+.loader {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Black background with opacity */
+  z-index: 999999; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  .mainContent {
+    display: flex;
+    flex-direction: column;
+  }
+}
+th.mat-header-cell {
+  white-space: nowrap;
+}

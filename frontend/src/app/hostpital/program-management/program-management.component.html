@@ -1,0 +1,352 @@
+<div class="content-inner-wrapper">
+  <h2>Program Management</h2>
+
+  <div class="search-patient">
+    <mat-form-field>
+      <input matInput placeholder="Search" />
+    </mat-form-field>
+    <div class="btn-se">
+      <button type="submit" (click)="openAddDiaolog()" class="btn btn-add-con">
+        + Add Program
+      </button>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      class="mat-elevation-z8 conditions_alignment_tab"
+      matSort
+    >
+      <ng-container matColumnDef="ProgramName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Program Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.programname }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="ProgramAction">
+        <th mat-header-cell *matHeaderCellDef class="action">Actions</th>
+        <td mat-cell *matCellDef="let element" class="edit-open-img text-left">
+          <i
+            class="fa fa-pencil-square-o"
+            (click)="editOpen(element)"
+            aria-hidden="true"
+          ></i>
+          &nbsp;&nbsp;
+
+          <i
+            class="fa fa-trash delete-icon"
+            (click)="deleteProgram(element)"
+          ></i>
+          &nbsp;&nbsp;
+
+          <button class="btnsAct" (click)="openSymptom(element._id)">
+            Add Symptom
+          </button>
+          <button class="btnsAct" (click)="openSideEffect(element._id)">
+            Add Side-Effect
+          </button>
+
+          <button class="btnsAct" (click)="openPatient(element)">
+            Assign Patient
+          </button>
+
+          <button class="btnsAct" (click)="assignJournal(element)">
+            Assign Journal
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <mat-paginator
+      [length]="length"
+      [pageSize]="5"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      showFirstLastButtons
+    >
+    </mat-paginator>
+  </div>
+</div>
+
+<div class="overlay" *ngIf="isModal">
+  <div class="mainsection col-sm-12 col-md-4 col-lg-4">
+    <h2 class="header">{{ buttonName }} Program</h2>
+    <form [formGroup]="saveProgram" class="formStatus">
+      <mat-form-field class="example-full-width">
+        <mat-label>Program Name</mat-label>
+        <input matInput formControlName="programname" placeholder="Name" />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>LMS program id (Optional)</mat-label>
+        <input matInput formControlName="lmsId" placeholder="LMS program id(Optional)" />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>LMS Instance id (Optional)</mat-label>
+        <input matInput formControlName="lmsInstanceId" placeholder="LMS Instance id(Optional)" />
+      </mat-form-field>
+      <div class="buttonArea">
+        <button
+          mat-raised-button
+          (click)="submitData(saveProgram.value)"
+          *ngIf="buttonName === 'Update'"
+        >
+          update
+        </button>
+        <button
+          mat-raised-button
+          (click)="addData(saveProgram.value)"
+          *ngIf="buttonName === 'Add'"
+        >
+          Add
+        </button>
+
+        <button mat-raised-button (click)="cancelModal()">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="overlay" *ngIf="isSymptom">
+  <div
+    class="mainsection col-sm-12 col-md-5 col-lg-5"
+    style="min-height: 300px;"
+  >
+    <h2 class="header">Add Symptom</h2>
+
+    <button class="btnsAct" (click)="addSymp()">Add</button>
+
+    <div class="symptomForm" *ngIf="isAddSymptom">
+      <form [formGroup]="addSymptomForm" class="symptomArea">
+        <div class="fields">
+          <label for="">Symptom:</label>
+          <input
+            type="text"
+            placeholder="Symptom"
+            class="formInput"
+            formControlName="symptom"
+          />
+        </div>
+        <div class="fields">
+          <label for="">Priority:</label>
+          <select name="" id="" formControlName="priority" class="selectForm">
+            <option value="{{ item }}" *ngFor="let item of priorities">{{
+              item
+            }}</option>
+          </select>
+        </div>
+        <div class="fields">
+          <button
+            class="btnsAct"
+            *ngIf="!isEditSymptom"
+            (click)="addSymptomsData(addSymptomForm.value)"
+          >
+            Save
+          </button>
+          <button
+            class="btnsAct"
+            *ngIf="isEditSymptom"
+            (click)="updateSymptomData(addSymptomForm.value)"
+          >
+            Update
+          </button>
+          <button class="btnsAct" (click)="cancelDialog()">cancel</button>
+        </div>
+      </form>
+    </div>
+    <div class="table-responsive example-container">
+      <table
+        mat-table
+        [dataSource]="symptomList"
+        class="mat-elevation-z8 conditions_alignment_tab"
+        matSort
+      >
+        <ng-container matColumnDef="SymptomName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Symptom
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.symptom }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="SymptomAction">
+          <th mat-header-cell *matHeaderCellDef class="action">Actions</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            class="edit-open-img text-left"
+          >
+            <i
+              class="fa fa-pencil-square-o"
+              (click)="editSymptom(element)"
+              aria-hidden="true"
+            ></i>
+            &nbsp;&nbsp;
+
+            <i
+              class="fa fa-trash delete-icon"
+              (click)="deleteSymptom(element)"
+            ></i>
+            &nbsp;&nbsp;
+          </td>
+        </ng-container>
+
+        <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColumns1; sticky: true"
+        ></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns1"></tr>
+      </table>
+    </div>
+
+    <button class="btnsAct" (click)="cancelDialog()">Close</button>
+  </div>
+</div>
+<div class="overlay" *ngIf="isSideEffect">
+  <div class="mainsection col-sm-12 col-md-6 col-lg-6">
+    <h2 class="header">Add Side Effect</h2>
+
+    <button class="btnsAct" (click)="addSideEff()">Add</button>
+
+    <div class="symptomForm" *ngIf="isAddSideEffect">
+      <form [formGroup]="addSideEffectForm" class="symptomArea">
+        <div class="fields">
+          <label for="">Side Effect:</label>
+          <input
+            type="text"
+            placeholder="Side Effect"
+            class="formInput"
+            formControlName="sideeffect"
+          />
+        </div>
+        <div class="fields">
+          <label for="">Priority:</label>
+          <select name="" id="" formControlName="priority" class="selectForm">
+            <option value="{{ item }}" *ngFor="let item of priorities">{{
+              item
+            }}</option>
+          </select>
+        </div>
+        <div class="fields">
+          <button
+            class="btnsAct"
+            *ngIf="!isEditSideEffect"
+            (click)="addSideEffectData(addSideEffectForm.value)"
+          >
+            Save
+          </button>
+          <button
+            class="btnsAct"
+            *ngIf="isEditSideEffect"
+            (click)="updateSideEffectData(addSideEffectForm.value)"
+          >
+            Update
+          </button>
+          <button class="btnsAct" (click)="cancelDialog()">cancel</button>
+        </div>
+      </form>
+    </div>
+    <div class="table-responsive example-container">
+      <table
+        mat-table
+        [dataSource]="sideEffectList"
+        class="mat-elevation-z8 conditions_alignment_tab"
+        matSort
+      >
+        <ng-container matColumnDef="EffectName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Side Effect
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.sideeffect }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="EffectAction">
+          <th mat-header-cell *matHeaderCellDef class="action">Actions</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            class="edit-open-img text-left"
+          >
+            <i
+              class="fa fa-pencil-square-o"
+              (click)="editSideEffect(element)"
+              aria-hidden="true"
+            ></i>
+            &nbsp;&nbsp;
+
+            <i
+              class="fa fa-trash delete-icon"
+              (click)="deleteSideEffect(element)"
+            ></i>
+            &nbsp;&nbsp;
+          </td>
+        </ng-container>
+
+        <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColumns2; sticky: true"
+        ></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>
+      </table>
+    </div>
+
+    <button class="btnsAct" (click)="cancelDialog()">Close</button>
+  </div>
+</div>
+
+<div class="overlay" *ngIf="isPatients">
+  <div class="mainsection col-sm-12 col-md-6 col-lg-6">
+    <h2 class="header">Manage Patient</h2>
+    <form [formGroup]="addPatientForm">
+      <div class="col-sm-9">
+        <mat-form-field style="width: 100%;margin-top: 3vh;">
+          <mat-label>Select Patient</mat-label>
+          <mat-select formControlName="patient_ids" multiple>
+            <mat-option *ngFor="let item of patientList" [value]="item.user_id"
+              >{{ item.firstName }} {{ item.lastName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <button
+        class="btnsAct"
+        (click)="assignPatientToProgram(addPatientForm.value)"
+      >
+        Submit
+      </button>
+      <button class="btnsAct" (click)="cancelPatientDialog()">
+        Cancel
+      </button>
+    </form>
+  </div>
+</div>
+
+<div class="overlay" *ngIf="isJournal">
+  <div class="mainsection col-sm-12 col-md-6 col-lg-6">
+    <h2 class="header">Manage Journal</h2>
+    <form [formGroup]="addJournalForm">
+      <div class="col-sm-9">
+        <mat-form-field style="width: 100%;margin-top: 3vh;">
+          <mat-label>Select Journal</mat-label>
+          <mat-select formControlName="journal_ids" multiple>
+            <mat-option *ngFor="let item of journalList" [value]="item._id"
+              >{{ item.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <button
+        class="btnsAct"
+        (click)="assignJournalToProgram(addJournalForm.value)"
+      >
+        Submit
+      </button>
+      <button class="btnsAct" (click)="cancelJournalDialog()">
+        Cancel
+      </button>
+    </form>
+  </div>
+</div>

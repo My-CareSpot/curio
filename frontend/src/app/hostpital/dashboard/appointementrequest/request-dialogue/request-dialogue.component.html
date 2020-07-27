@@ -1,0 +1,239 @@
+<div class="custum-modal">
+  <h2 mat-dialog-title>Set Appointment</h2>
+
+  <div mat-dialog-content>
+    <div class="row">
+      <div class="col-sm-12">
+        <form [formGroup]="bookingForm">
+          <div class="w-60 fields row">
+            <div class="col-sm-6">
+              <label class="label">Selected Provider : </label>
+            </div>
+            <div class="col-sm-6">
+              <span class="value"
+                >{{ requestData.careTeamFirstName }}
+                {{ requestData.careTeamLastName }}</span
+              >
+            </div>
+          </div>
+
+          <div class="w-60 fields row">
+            <div class="col-sm-6">
+              <label class="label">Select Other Care Taker : </label>
+            </div>
+            <div class="col-sm-6">
+              <input
+                type="checkbox"
+                name="otherCareTaker"
+                (change)="getChangedValue($event.target.checked)"
+                id=""
+              />
+              <div *ngIf="otherCareTaker">
+                <select
+                  name=""
+                  id=""
+                  formControlName="caretaker_id"
+                  style="width: 100%; padding: 10px 0;"
+                >
+                  <option
+                    value=""
+                    *ngFor="let item of tempCareList"
+                    [value]="item.caretaker_id"
+                    >{{ item.caredata.firstName
+                    }}{{ item.caredata.lastName }}</option
+                  >
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="w-60 fields row">
+            <div class="col-sm-6"><label class="label">Patient : </label></div>
+            <div class="col-sm-6">
+              <span class="value"
+                >{{ requestData.patientfirstName }}
+                {{ requestData.patientlastName }}</span
+              >
+            </div>
+          </div>
+          <div class="w-60 fields row">
+            <div class="col-sm-6">
+              <label class="label">Preffered Timings : </label>
+            </div>
+            <div class="col-sm-6">
+              <div *ngIf="requestData.isMorning">
+                <span class="value"
+                  ><label class="label">Start</label
+                  >{{ requestData.morningstarttime | date: "shortTime" }}
+                </span>
+                <span class="value"
+                  ><label class="label">End</label
+                  >{{ requestData.morningendtime | date: "shortTime" }}
+                </span>
+              </div>
+              <div *ngIf="requestData.isAfternoon">
+                <span class="value"
+                  ><label class="label">Start</label
+                  >{{ requestData.afternoonstarttime | date: "shortTime" }}
+                </span>
+                <span class="value"
+                  ><label class="label">End</label
+                  >{{ requestData.afternoonendtime | date: "shortTime" }}
+                </span>
+              </div>
+              <div *ngIf="requestData.isEvening">
+                <span class="value"
+                  ><label class="label">Start</label
+                  >{{ requestData.eveningstarttime | date: "shortTime" }}
+                </span>
+                <span class="value"
+                  ><label class="label">End</label
+                  >{{ requestData.eveningendtime | date: "shortTime" }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="w-60 fields row">
+            <div class="col-sm-6"><label class="label">Date : </label></div>
+            <div class="col-sm-6">
+              <span class="value"
+                >{{ requestData.appointment_date | date: "mediumDate" }}
+              </span>
+            </div>
+          </div>
+
+          <div class="w-60 fields row">
+            <div class="col-sm-6">
+              <label class="label">Select Other Date : </label>
+            </div>
+            <div class="col-sm-6">
+              <input
+                type="checkbox"
+                name="isOtherDate"
+                (change)="getChanged($event.target.checked)"
+                id=""
+              />
+              <div *ngIf="isOtherDate">
+                <mat-form-field class="w-100">
+                  <mat-label>Select Date </mat-label>
+                  <input
+                    matInput
+                    [matDatepicker]="picker"
+                    [min]="startDate"
+                    (click)="picker.open()"
+                    (ngModelChange)="dateChangeValue($event)"
+                    formControlName="appointment_date"
+                  />
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="picker"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="w-60 fields row">
+            <div class="col-sm-6">
+              <label class="label">Patient Preferred Time : </label>
+            </div>
+            <div class="col-sm-6">
+              <span class="value"
+                >{{ requestData.appointment_time | date: "shortTime" }} to
+                {{ requestData.appointment_end_time | date: "shortTime" }}</span
+              >
+            </div>
+          </div>
+
+          <div class="w-60 fields row">
+            <div class="col-sm-6">
+              <label class="label">Select Start Time : </label>
+            </div>
+            <div class="col-sm-6">
+              <input
+                class="setTime"
+                formControlName="appointment_time"
+                [owlDateTime]="dtPicker1"
+                [owlDateTimeTrigger]="dtPicker1"
+                placeholder="Time"
+              />
+              <owl-date-time [pickerType]="'timer'" #dtPicker1></owl-date-time>
+            </div>
+          </div>
+          <div class="w-60 fields row">
+            <div class="col-sm-6">
+              <label class="label">Select End Time : </label>
+            </div>
+            <div class="col-sm-6">
+              <input
+                class="setTime"
+                formControlName="appointment_end_time"
+                [owlDateTime]="dtPicker2"
+                [owlDateTimeTrigger]="dtPicker2"
+                placeholder="Time"
+              />
+              <owl-date-time [pickerType]="'timer'" #dtPicker2></owl-date-time>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="submit_referal">
+    <button
+      class="mat-raised-button close-btn-modal closebtn"
+      (click)="close()"
+    >
+      Close</button
+    >&nbsp;
+
+    <button
+      class="mat-raised-button save-btn-modal"
+      [disabled]="bookingForm.invalid"
+      (click)="save()"
+    >
+      Save Time
+    </button>
+  </div>
+</div>
+
+<!-- <mat-dialog-content>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <mat-form-field>
+            <mat-label>Select Provider</mat-label>
+            <mat-select>
+              <mat-option>Dr. John M</mat-option>
+              <mat-option>Dr. Mike S</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-12">
+          <mat-form-field>
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" style="width: 100%;" />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-12">
+          <mat-form-field>
+            <mat-label>Time</mat-label>
+            <mat-select>
+              <mat-option>10:00 to 11:00</mat-option>
+              <mat-option>11:00 to 12:00</mat-option>
+              <mat-option>02:00 to 03:00</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content> -->

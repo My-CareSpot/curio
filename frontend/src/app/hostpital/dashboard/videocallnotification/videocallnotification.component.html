@@ -1,0 +1,21 @@
+<div class="content-inner-wrapper">
+  <h2>Video Call Notifications</h2>
+
+  <div class="notificationsWrapper">
+    <div class="notification" *ngFor="let item of notificationList">
+      <div (click)="markAsRead(item)">
+        Hello <strong>{{ item.caretaker_name }}</strong
+        >,
+        <p>
+          You have a scheduled appointment with
+          <strong>{{ item.patient_name }}</strong> at
+          {{ item.appointment_time | date: "shortTime" }} on
+          {{ item.appointment_date | date: "mediumDate" }}
+        </p>
+      </div>
+    </div>
+    <div class="notData" *ngIf="notificationList.length === 0">
+      <div class="nonotification">No Notifications Yet!!</div>
+    </div>
+  </div>
+</div>

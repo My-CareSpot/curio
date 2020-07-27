@@ -1,0 +1,74 @@
+<div class="content-inner-wrapper">
+  <h2>Consult</h2>
+  <mat-toolbar color="accent">
+    <mat-toolbar-row>
+      <span> <span></span>{{ userName }}</span>
+      <span class="example-spacer"></span>
+      <!-- <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon> -->
+      <span *ngIf="!join">{{
+        connected === true ? "Connected" : "You are Disconnected"
+      }}</span>
+      <span *ngIf="join"> Connecting ... </span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div
+    id="connected-video-chat"
+    style="
+      height: 500px;
+      width: 100%;
+      border-bottom-right-radius: 6px;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+    "
+  ></div>
+  <div class="video-chat-controls">
+    <!-- <a [class.mute]="!preview" class="video" (click)="togglePreview()"></a><br>
+              <a  [class.mute]="muted" class="voice" (click)="toggleMic($event)"></a><br>
+              <a  [ngClass]="{
+                'connect' : !connected,
+                'disconnect' : connected
+              }" (click)="toggleConnect()"></a> -->
+
+    <button
+      mat-fab
+      [disabled]="join"
+      [ngClass]="{
+        muteConnected: !muted,
+        muteDisconnect: muted
+      }"
+      (click)="toggleMic()"
+    >
+      <mat-icon *ngIf="!muted" style="color: #3489ca;" class="mat-18"
+        >mic</mat-icon
+      >
+      <mat-icon *ngIf="muted" class="mat-18">mic_off</mat-icon>
+    </button>
+    <!-- [color]="muted === true ? 'warn' : 'primary'" -->
+    <button
+      mat-fab
+      [disabled]="join"
+      [ngClass]="{
+        muteConnected: preview,
+        muteDisconnect: !preview
+      }"
+      (click)="togglePreview()"
+    >
+      <mat-icon *ngIf="preview" style="color: #3489ca;" class="mat-18"
+        >videocam</mat-icon
+      >
+      <mat-icon *ngIf="!preview" class="mat-18">videocam_off</mat-icon>
+    </button>
+    <button
+      mat-fab
+      [disabled]="join"
+      [color]="connected === true ? 'warn' : 'primary'"
+      (click)="toggleConnect()"
+    >
+      <mat-icon *ngIf="!connected" class="mat-18">call</mat-icon>
+      <mat-icon *ngIf="connected" class="mat-18">call_end</mat-icon>
+    </button>
+
+    <br />
+  </div>
+</div>

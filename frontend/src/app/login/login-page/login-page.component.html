@@ -1,0 +1,120 @@
+<div class="login-section">
+  <div class="login-section-inner ">
+    <div class="register-Left  col-lg-6 col-md-6 col-sm-12">
+      <!-- <button (click)="goToSignUp()" class="btn btn-primary btn-sign-in">
+        SIGN UP
+      </button> -->
+      <img src="../../../assets/img/Logo.svg" />
+    </div>
+    <div class="login-right col-lg-6 col-md-6 col-sm-12">
+      <mat-card>
+        <mat-card-content>
+          <form [formGroup]="loginForm">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="InputEmail">Email address</label>
+                  <input
+                    type="email"
+                    required
+                    formControlName="email"
+                    class="form-control"
+                    id="InputEmail"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+
+                  <div
+                    *ngIf="email.invalid && (email.dirty || email.touched)"
+                    class="error-show"
+                  >
+                    <div *ngIf="email.errors.required">
+                      Email is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="InputPassword">Password</label>
+                  <input
+                    type="password"
+                    required
+                    formControlName="password"
+                    class="form-control"
+                    id="exampleInputPassword1"
+                    placeholder="Password"
+                  />
+                  <div
+                    *ngIf="
+                      password.invalid && (password.dirty || password.touched)
+                    "
+                    class="error-show"
+                  >
+                    <div *ngIf="password.errors.required">
+                      Password is required.
+                    </div>
+                    <div *ngIf="password.errors.minlength">
+                      Password must be minimum 3 letters
+                    </div>
+                    <div *ngIf="password.errors.maxlength">
+                      Maximum allowed letters are 20
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="row align-items-center">
+                  <div class="col-sm-6">
+                    <!-- <mat-checkbox>Remember me</mat-checkbox> -->
+                  </div>
+                  <div class="col-sm-6 text-right">
+                    <button
+                      mat-raised-button
+                      (click)="loginUser(loginForm.value)"
+                      color="primary"
+                    >
+                      LOGIN
+                    </button>
+                  </div>
+                  <!-- <button
+              (click)="loginUser(loginForm.value)"
+              class="btn btn-primary btn-sign-in pull-right"
+            >
+              LOGIN
+            </button> -->
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="row pt10">
+                  <div class="col-sm-6">
+                    <a class="sign-up" (click)="goToSignUp()">Register Now</a>
+                  </div>
+                  <div class="col-sm-6 text-right">
+                    <a
+                      class="forget-password"
+                      [routerLink]="['/forgot-password']"
+                      routerLinkActive="router-link-active"
+                      >Forgot password ?</a
+                    >
+                  </div>
+                </div>
+
+                <!-- <a
+                [routerLink]="forget - password"
+                routerLinkActive="router-link-active"
+                >Reset Password</a
+              > -->
+                <!-- <button class="resetPassword" (click)="resetPassword()">
+                Reset Password
+              </button> -->
+              </div>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+

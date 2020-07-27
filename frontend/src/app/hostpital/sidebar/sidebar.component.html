@@ -1,0 +1,284 @@
+<aside class="sidebar-parent">
+  <!-- <div class="logo-sidebar">CURIO</div> -->
+  <ul id="slimScrollContainer">
+    <!-- <li>
+      <a
+        [routerLink]="['/dashboard/patient-list']"
+        routerLinkActive="router-link-active"
+      >
+        Patient List</a
+      >
+    </li>
+
+    <li>
+      <a
+        [routerLink]="['/dashboard/care-team']"
+        routerLinkActive="router-link-active"
+      >
+        Care Team</a
+      >
+    </li> -->
+
+    <li>
+      <a
+        (mouseover)="showTooltip('menu1', 'Dashboard')"
+        (mouseout)="hideTooltip()"
+        id="menu1"
+        [routerLink]="['/dashboard/appointment-request']"
+        routerLinkActive="router-link-active"
+      >
+        <span class="icon-sidebar"
+          ><img src="../../../assets/img/dashboar_icon.svg"
+        /></span>
+
+        <span class="menu-sidebar">Dashboard</span></a
+      >
+    </li>
+    <li>
+      <a
+        (mouseover)="showTooltip('menu1', 'Dashboard')"
+        (mouseout)="hideTooltip()"
+        id="menu1"
+        [routerLink]="['/dashboard/profile']"
+        routerLinkActive="router-link-active"
+      >
+        <span class="icon-sidebar">
+          <i class="fa fa-user" aria-hidden="true"></i>
+        </span>
+
+        <span class="menu-sidebar">Profile</span></a
+      >
+    </li>
+    <li>
+      <a
+        (mouseover)="showTooltip('menu1', 'Dashboard')"
+        (mouseout)="hideTooltip()"
+        id="menu1"
+        [routerLink]="['/dashboard/booking-list']"
+        routerLinkActive="router-link-active"
+      >
+        <span class="icon-sidebar">
+          <i class="fa fa-calendar-o" aria-hidden="true"></i>
+        </span>
+
+        <span class="menu-sidebar">Appointments</span></a
+      >
+    </li>
+
+    <li>
+      <a
+        (mouseover)="showTooltip('menu1', 'Dashboard')"
+        (mouseout)="hideTooltip()"
+        id="menu1"
+        [routerLink]="['/dashboard/program-management']"
+        routerLinkActive="router-link-active"
+      >
+        <span class="icon-sidebar">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+        </span>
+
+        <span class="menu-sidebar">Programs</span></a
+      >
+    </li>
+
+    <li>
+      <a
+        (mouseover)="showTooltip('menu1', 'Dashboard')"
+        (mouseout)="hideTooltip()"
+        id="menu1"
+        [routerLink]="['/dashboard/group-session']"
+        routerLinkActive="router-link-active"
+      >
+        <span class="icon-sidebar">
+          <i class="fa fa-object-group" aria-hidden="true"></i>
+        </span>
+
+        <span class="menu-sidebar">Group Session</span></a
+      >
+    </li>
+
+    <!-- <li>
+      <a
+        (mouseover)="showTooltip('menu1', 'Dashboard')"
+        (mouseout)="hideTooltip()"
+        id="menu1" [routerLink]="['/dashboard/patient-detail']"
+        routerLinkActive="router-link-active"
+        >
+        <span class="icon-sidebar"
+          ><img src="../../../assets/img/patient-detail.svg"
+        /></span>
+
+        <span class="menu-sidebar">Patient Detail</span></a
+      >
+    </li> -->
+    <!-- <li>
+      <a
+        (mouseover)="showTooltip('menu1', 'Dashboard')" 
+        (mouseout)="hideTooltip()" 
+        id="menu1" [routerLink]="['/dashboard/consult']"
+        routerLinkActive="router-link-active"
+        >
+        <span class="icon-sidebar"
+          ><img src="../../../assets/img/dashboar_icon.svg"
+        /></span>
+
+        <span class="menu-sidebar">Consult</span></a
+      >
+    </li> -->
+
+    <li>
+      <a
+        (mouseover)="showTooltip('menu2', 'Health Summary')"
+        (mouseout)="hideTooltip()"
+        id="menu2"
+        [routerLink]="['/dashboard/patient-list']"
+        routerLinkActive="router-link-active"
+        ><span class="icon-sidebar">
+          <i class="fa fa-users" aria-hidden="true"></i>
+        </span>
+
+        <span class="menu-sidebar">Patient List</span></a
+      >
+    </li>
+
+    <li>
+      <a
+        (mouseover)="showTooltip('menu2', 'Health Summary')"
+        (mouseout)="hideTooltip()"
+        id="menu2"
+        [routerLink]="['/dashboard/setting']"
+        routerLinkActive="router-link-active"
+        ><span class="icon-sidebar">
+          <i class="fa fa-cog" aria-hidden="true"></i>
+        </span>
+
+        <span class="menu-sidebar">Setting</span></a
+      >
+    </li>
+
+    <li>
+      <a
+        (mouseover)="showTooltip('menu2', 'assessment-list')"
+        (mouseout)="hideTooltip()"
+        id="menu2"
+        [routerLink]="['/dashboard/assessment-list']"
+        routerLinkActive="router-link-active"
+        ><span class="icon-sidebar">
+          <i class="fa fa-list-alt" aria-hidden="true"></i>
+          <!-- <img src="../../../assets/img/patient-icon.svg"
+        /> -->
+        </span>
+
+        <span class="menu-sidebar">Assessment</span></a
+      >
+    </li>
+    <li>
+      <a
+        (mouseover)="showTooltip('menu2', 'Journal Summary')"
+        (mouseout)="hideTooltip()"
+        id="menu2"
+        [routerLink]="['/dashboard/journal-list']"
+        routerLinkActive="router-link-active"
+        ><span class="icon-sidebar">
+          <i class="fa fa-book" aria-hidden="true"></i>
+          <!-- <img src="../../../assets/img/patient-icon.svg"
+        /> -->
+        </span>
+
+        <span class="menu-sidebar">Journal</span></a
+      >
+    </li>
+    <li>
+      <a class="left-menu-link" (click)="toggleMenus($event)">
+        <span class="icon-sidebar">
+          <img src="../../../assets/img/careplan-icon.svg"
+        /></span>
+        <span class="menu-sidebar">Care Team</span>
+        <span class="d-flex ml-auto"><i class="fa fa-chevron-down"></i></span>
+      </a>
+      <ul class="expandableChild">
+        <li>
+          <a
+            (mouseover)="showTooltip('menu3', 'Care Plan')"
+            [routerLink]="['/dashboard/care-team']"
+            routerLinkActive="router-link-active"
+            (mouseout)="hideTooltip()"
+            id="menu3"
+            (click)="sidebarMenuSelected($event, 'Care Plan')"
+          >
+            <span class="icon-sidebar"
+              ><img src="../../../../assets/img/careplan-icon.svg"
+            /></span>
+            <span class="menu-sidebar">Care List</span>
+          </a>
+        </li>
+        <li>
+          <a
+            (mouseover)="showTooltip('menu4', 'Medical History')"
+            [routerLink]="['/dashboard/calendar']"
+            routerLinkActive="router-link-active"
+            (mouseout)="hideTooltip()"
+            id="menu4"
+            (click)="sidebarMenuSelected($event, 'Medical History')"
+          >
+            <span class="menu-sidebar"
+              ><i class="fa fa-calendar"></i> &nbsp;&nbsp;&nbsp;Calendar</span
+            >
+          </a>
+        </li>
+
+        <li>
+          <a
+            (mouseover)="showTooltip('menu4', 'Medical History')"
+            [routerLink]="['/dashboard/send-motivation']"
+            routerLinkActive="router-link-active"
+            (mouseout)="hideTooltip()"
+            id="menu4"
+            (click)="sidebarMenuSelected($event, 'Medical History')"
+          >
+            <span class="menu-sidebar"
+              ><i class="fa fa-quote-left"></i> &nbsp;&nbsp;&nbsp;Send
+              Motivation</span
+            >
+          </a>
+        </li>
+
+        <li>
+          <a
+            (mouseover)="showTooltip('menu4', 'Medical History')"
+            [routerLink]="['/dashboard/send-group-activity']"
+            routerLinkActive="router-link-active"
+            (mouseout)="hideTooltip()"
+            id="menu4"
+            (click)="sidebarMenuSelected($event, 'Medical History')"
+          >
+            <span class="menu-sidebar"
+              ><i class="fa fa-calendar"></i> &nbsp;&nbsp;&nbsp;Send
+              Activity</span
+            >
+          </a>
+        </li>
+
+        <li>
+          <a
+            (mouseover)="showTooltip('menu4', 'Medical History')"
+            [routerLink]="['/dashboard/set-availibility']"
+            routerLinkActive="router-link-active"
+            (mouseout)="hideTooltip()"
+            id="menu4"
+            (click)="sidebarMenuSelected($event, 'Medical History')"
+          >
+            <span class="menu-sidebar"
+              ><i class="fa fa-clock-o"></i>
+              &nbsp;&nbsp;&nbsp;Availibility</span
+            >
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</aside>
+
+<div class="tooltip-outer" id="tooltipContainer">
+  <span id="tooltipTxt"></span>
+</div>

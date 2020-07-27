@@ -1,0 +1,17 @@
+table {
+    width: 100%;
+    td{width: 25%;}
+    th{width: 25%;}
+  }
+  .edit-open-img i.delete-icon{color:red;cursor: pointer;}
+  .edit-open-img i{margin-right: 10px;color: #1B82D4;}
+  .edit-open-img i.cancel-icon{color: red;}
+  .disablebtn{
+    color:grey !important;
+    cursor:not-allowed
+  }
+  .enablebtn{
+    color:#1B82D4 !important;
+    cursor:pointer
+  }
+  

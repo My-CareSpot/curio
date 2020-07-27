@@ -1,0 +1,88 @@
+<div class="content-inner-wrapper">
+    <h2><i class="fa fa-arrow-left" aria-hidden="true" [routerLink]="['/dashboard/assessment-list']"  ></i></h2>
+    <h2>Add Assessment to Patient</h2>
+  
+    <div class="card">
+      <div class="row" [formGroup]="assessementPatient">
+         
+          <div class="col-sm-4">
+            <mat-form-field style="width: 100%;">
+              <mat-label>Select Patient Name</mat-label>
+              <mat-select formControlName="patientName" multiple>
+                <mat-option *ngFor="let patient of patientList" [value]="patient.user_id">
+                    {{patient.firstName}} {{patient.middleName}} {{patient.lastName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-sm-4">
+            <mat-form-field style="width: 100%;">
+              <mat-label>Select Assessment</mat-label>
+              <mat-select formControlName="assessmentId" multiple>
+                <mat-option *ngFor="let assessment of assessmentList" [value]="assessment._id" >{{
+                  assessment.name
+                }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-sm-4">
+            <button class="mat-raised-button save-btn-modal floatRight " (click)="saveAssessment()">
+                Submit
+            </button>
+          </div> 
+      </div>
+
+    </div>
+    <div style="margin-top: 10px;">
+
+    </div>
+    <div class="table-responsive">
+        <table
+          mat-table
+          [dataSource]="dataSource"
+          class="mat-elevation-z8 conditions_alignment_tab"
+          matSort
+        >
+          <ng-container matColumnDef="patientName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Patient Name</th>
+            <td mat-cell *matCellDef="let element">{{element.full_name}}</td>
+          </ng-container>
+    
+          <ng-container matColumnDef="assessmentName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Assessment Name
+            </th>
+            <td mat-cell *matCellDef="let element">
+                <ul>
+                    <li *ngFor="let x of element.assessment_info">{{x.assessment_name}}</li>
+                  </ul>
+            </td>
+          </ng-container>          
+          
+    
+          <ng-container matColumnDef="Action">
+            <th mat-header-cell *matHeaderCellDef class="action">Actions</th>
+            <td mat-cell *matCellDef="let element" class="edit-open-img text-left">
+              <i class="fa fa-trash delete-icon" aria-hidden="true" 
+               title="Delete Assessment" (click)="deletAssessmentRel(element)"></i>  
+              <i class="fa fa-pencil-square-o" aria-hidden="true" style="cursor: pointer;"
+               title="Open Assessment Page" (click)="openDialogforAssignAssessment(element)"></i>
+    
+            </td>
+          </ng-container>
+    
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+    
+        <!-- <mat-paginator
+          [length]="totalCount"
+          [pageSize]="defaultCount"
+          [pageSizeOptions]="paginate"
+          showFirstLastButtons
+          (page)="paginatePage($event)"
+        >
+        </mat-paginator> -->
+      </div>
+  </div>
+  

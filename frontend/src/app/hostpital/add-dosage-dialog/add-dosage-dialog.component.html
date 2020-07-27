@@ -1,0 +1,195 @@
+<div class="custum-modal">
+  <h2 mat-dialog-title>Add Dosage</h2>
+
+  <div mat-dialog-content [formGroup]="form">
+    <div class="row timings">
+      <div class="col-md-4">
+        <mat-form-field class="w-100">
+          <mat-select placeholder="Medicine" formControlName="medicine_id">
+            <mat-option *ngFor="let item of list" [value]="item._id">
+              {{ item.medicineName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <mat-form-field class="w-100">
+          <mat-select placeholder="Medicine Type" formControlName="medType">
+            <mat-option *ngFor="let item of medTypes" [value]="item.value">
+              {{ item.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <mat-form-field class="w-100">
+          <input matInput placeholder="Details" formControlName="details" />
+        </mat-form-field>
+      </div>
+      <!-- <div class="col-md-4">
+        <mat-form-field class="w-100">
+          <mat-select placeholder="Frequency" formControlName="frequency">
+            <mat-option *ngFor="let item of frequency" [value]="item.value">
+              {{ item.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div> -->
+    </div>
+   
+    <div class="row timings">
+      <div class="col-md-4">
+        <mat-form-field class="w-100">
+          <mat-label>Date Time</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            [min]="startDate"
+            (click)="picker.open()"
+            (ngModelChange)="dateChangeValue($event)"
+            formControlName="datetime"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-4">
+        <mat-form-field class="w-100">
+          <mat-label>Start Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker1"
+            [min]="startDate"
+            (click)="picker1.open()"
+            (ngModelChange)="dateChangeValue1($event)"
+            formControlName="startdate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker1"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <mat-form-field class="w-100">
+          <mat-label>End Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker2"
+            [min]="startDate"
+            (click)="picker2.open()"
+            (ngModelChange)="dateChangeValue2($event)"
+            formControlName="enddate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker2"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row timings">
+      <div class="col-sm-4 space-btw-inputext">
+        <div class="dflex justify-content-left align-items-center">
+          <!-- <label class="w60">Morning:</label>
+          <div>
+            <input
+              class="setTime"
+              formControlName="morningtime"
+              [owlDateTime]="dtPicker1"
+              [owlDateTimeTrigger]="dtPicker1"
+              placeholder="Time"
+            />
+            <owl-date-time [pickerType]="'timer'" #dtPicker1></owl-date-time>
+          </div> -->
+          <mat-checkbox
+            id="amateur1"
+            color="primary"
+            formControlName="isMorning"
+            >Morning</mat-checkbox
+          >
+          <div *ngIf="showMorningTime">
+            <input
+              class="setTime"
+              formControlName="morningtime"
+              [owlDateTime]="dtPicker1"
+              [owlDateTimeTrigger]="dtPicker1"
+              placeholder="Time"
+            />
+            <owl-date-time [pickerType]="'timer'" #dtPicker1></owl-date-time>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-4 space-btw-inputext">
+        <div class="dflex justify-content-left align-items-center">
+          <!-- <label class="w60">Afternoon:</label>
+          <div>
+            <input
+              class="setTime"
+              formControlName="afternoontime"
+              [owlDateTime]="dtPicker2"
+              [owlDateTimeTrigger]="dtPicker2"
+              placeholder="Time"
+            />
+            <owl-date-time [pickerType]="'timer'" #dtPicker2></owl-date-time>
+          </div> -->
+          <mat-checkbox
+            id="amateur2"
+            color="primary"
+            formControlName="isAfternoon"
+            >Afternoon</mat-checkbox
+          >
+          <div *ngIf="showAfternoonTime">
+            <input
+              class="setTime"
+              formControlName="afternoontime"
+              [owlDateTime]="dtPicker2"
+              [owlDateTimeTrigger]="dtPicker2"
+              placeholder="Time"
+            />
+            <owl-date-time [pickerType]="'timer'" #dtPicker2></owl-date-time>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-4 space-btw-inputext">
+        <div class="dflex justify-content-left align-items-center">
+          <mat-checkbox id="amateur" color="primary" formControlName="isEvening"
+            >Evening</mat-checkbox
+          >
+          <div *ngIf="showEveningTime">
+            <input
+              class="setTime"
+              formControlName="eveningtime"
+              [owlDateTime]="dtPicker3"
+              [owlDateTimeTrigger]="dtPicker3"
+              placeholder="Time"
+            />
+            <owl-date-time [pickerType]="'timer'" #dtPicker3></owl-date-time>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="submit_referal">
+    <button class="mat-raised-button close-btn-modal" (click)="close()">
+      Close</button
+    >&nbsp;
+
+    <button
+      [disabled]="form.invalid"
+      class="mat-raised-button save-btn-modal"
+      (click)="save()"
+    >
+      Save
+    </button>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+mat-form-field {
+  width: 100%;
+}
+.fields {
+  .label {
+    font-size: 15px;
+    font-weight: 600;
+    color: black;
+    margin-right: 10px;
+    // width: 50%;
+  }
+  .value {
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+  }
+}
+
+.fields.w-60{margin-bottom: 10px;}

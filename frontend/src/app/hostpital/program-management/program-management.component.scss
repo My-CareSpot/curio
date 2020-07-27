@@ -1,0 +1,127 @@
+table {
+  width: 100%;
+  td {
+    width: 20%;
+  }
+}
+.fa-pencil-square-o {
+  color: #1b82d4;
+}
+.delete-icon {
+  color: red;
+}
+
+.overlay {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .mainsection {
+    background-color: white;
+    box-shadow: 0px 2px 2px lightgray;
+    padding: 1em;
+    margin: 1em;
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    min-height:30vh;
+
+    .header {
+      background-color: #1b82d4;
+      color: white;
+      padding: 10px;
+    }
+  }
+}
+.formStatus {
+  display: flex;
+  flex-direction: column;
+  padding: 4em;
+}
+
+button {
+  background-color: #1b82d4;
+  color: white;
+  margin-right: 5px;
+  margin-left: 5px;
+  width: 200px;
+}
+
+.btnsAct {
+  background-color: #1b82d4;
+  color: white;
+  margin: 5px;
+  width: auto;
+  border: 1px solid #1b82d4;
+  border-radius: 5%;
+  margin-left:3vh
+}
+
+.buttonArea {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.symptomOverlay {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .maincontent {
+    background-color: white;
+    box-shadow: 0px 2px 2px lightgray;
+    margin: 10px;
+    padding: 15px;
+  }
+}
+.symptomForm {
+  .symptomArea {
+    .fields {
+      display: flex;
+      padding: 5px;
+      margin: 5px;
+
+      label {
+        width: 20%;
+        font-weight: 600;
+      }
+
+      .formInput {
+        padding: 5px;
+        padding-left: 10px;
+        border: 1px solid lightgray;
+        width: 70%;
+      }
+      .selectForm {
+        width: 70%;
+      }
+    }
+  }
+}
+.example-container {
+  height: auto;
+  overflow-y: auto;
+  max-height: 350px;
+}

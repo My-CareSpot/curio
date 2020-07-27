@@ -1,0 +1,40 @@
+.card {
+  padding: 15px;
+}
+.save-btn-modal {
+  padding: 10px 30px;
+  margin-top: 15px;
+}
+
+.floatRight {
+  float: right;
+}
+table {
+  width: 100%;
+  td {
+    width: 25%;
+  }
+  th {
+    width: 25%;
+  }
+}
+.edit-open-img i.delete-icon {
+  color: red;
+  cursor: pointer;
+}
+.edit-open-img i {
+  margin-right: 10px;
+  color: #1b82d4;
+}
+.edit-open-img i.cancel-icon {
+  color: red;
+}
+
+.example-container {
+  height: 400px;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}

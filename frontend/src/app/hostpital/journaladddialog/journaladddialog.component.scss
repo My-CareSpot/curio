@@ -1,0 +1,9 @@
+.mat-form-field {
+    display: block;
+  }
+  .mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+  .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color: blue;
+  }

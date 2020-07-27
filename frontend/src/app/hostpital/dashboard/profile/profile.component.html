@@ -1,0 +1,223 @@
+<div class="content-inner-wrapper">
+  <h2>Care Team Profile</h2>
+
+  <div class="set_availability_btn">
+    <!-- <div class="btn-se">
+            <button type="submit" class="btn btn-add-con">Set Availability</button>
+        </div> -->
+  </div>
+
+  <div class="form-section card">
+    <form>
+      <!-- <div class="row">
+
+            
+            <div class="col-md-6">
+                <div class="form-group">
+                 
+                 
+                  <div class="row">
+                    <div class="col-sm-6">
+                        <span class="label-bold">Name : </span>
+                     </div>
+                        <div class="col-sm-6">
+                    <span>Max</span>
+                 </div>
+                </div>
+                
+                </div>
+              </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+              
+                <div class="row">
+                    <div class="col-sm-6">
+                        <span class="label-bold">Email address : </span>
+                     </div>
+                        <div class="col-sm-6">
+                    <span>email@yopmail.com</span>
+                 </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <span class="label-bold">Contact : </span>
+                     </div>
+                        <div class="col-sm-6">
+                    <span>9764567655</span>
+                 </div>
+                </div>
+                
+                
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  
+                  <div class="row">
+                    <div class="col-sm-6">
+                        <span class="label-bold">Role : </span>
+                     </div>
+                        <div class="col-sm-6">
+                    <span>test test test</span>
+                 </div>
+                </div>
+                  
+                  
+                  </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                      
+                      <div class="row">
+                        <div class="col-sm-6">
+                            <span class="label-bold">Specialization : </span>
+                         </div>
+                            <div class="col-sm-6">
+                        <span>test testtest</span>
+                     </div>
+                    </div>
+                      
+                      </div>
+                    </div>
+
+            </div> -->
+
+      <div class="row profile_read">
+        <div class="col-sm-3">
+          <img src="../../../../assets/img/nicolas-profile.png" />
+        </div>
+
+        <div class="col-sm-9">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <!-- <label for="InputEmail">Email address</label> -->
+                <div class="row">
+                  <div class="col-sm-4">
+                    <span class="label-bold"> Name : </span>
+                  </div>
+                  <div class="col-sm-8">
+                    <span
+                      >{{ userDetails.firstName }} {{ userDetails.lastName }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <!-- <label for="InputPassword">Password</label> -->
+                <div class="row">
+                  <div class="col-sm-4">
+                    <span class="label-bold">Contact: </span>
+                  </div>
+                  <div class="col-sm-8">
+                    <span>{{ userDetails.phoneNumber }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <!-- <label for="InputEmail">Email address</label> -->
+                <div class="row">
+                  <div class="col-sm-4">
+                    <span class="label-bold">Email address : </span>
+                  </div>
+                  <div class="col-sm-8">
+                    <span>{{ userDetails.email }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="col-md-6">
+              <div class="form-group">
+               
+                <div class="row">
+                  <div class="col-sm-4">
+                    <span class="label-bold">Specialization : </span>
+                  </div>
+                  <div class="col-sm-8">
+                    <span>Test</span>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <!-- <div class="button-save">
+                        <button
+                        mat-raised-button
+                       
+                        color="primary"
+                      >
+                      Save
+                      </button>
+                        </div> -->
+          <button (click)="openEdit()" class="mat-raised-button save-btn-modal">
+            Update
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="overlay" *ngIf="isEdit">
+  <div class="mainsection col-lg-5 col-md-5 col-sm-12">
+    <form [formGroup]="saveHospitalForm">
+      <mat-form-field class="example-full-width">
+        <mat-label>First Name</mat-label>
+        <input matInput placeholder="first name" formControlName="firstName" />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Last Name</mat-label>
+        <input matInput placeholder="last name" formControlName="lastName" />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          placeholder="someone@example.com"
+          formControlName="email"
+        />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Phone Number</mat-label>
+        <input
+          matInput
+          placeholder="7777777777"
+          formControlName="phoneNumber"
+        />
+      </mat-form-field>
+      <div>
+        <button
+          (click)="updateData(saveHospitalForm.value)"
+          class="mat-raised-button save-btn-modal"
+          [disabled]="saveHospitalForm.invalid"
+        >
+          Update
+        </button>
+
+        <button
+          (click)="cancelUpdate()"
+          class="mat-raised-button save-btn-modal"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

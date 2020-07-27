@@ -1,0 +1,268 @@
+<div class="content-inner-wrapper">
+  <h2>Add Care Member</h2>
+  <mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Basic Info</ng-template>
+
+        <div class="row">
+          <div class="col-md-4 ">
+            <mat-form-field class="w-100">
+              <input
+                matInput
+                placeholder="First Name"
+                formControlName="firstName"
+              />
+            </mat-form-field>
+          </div>
+          <div class="col-md-4 ">
+            <mat-form-field class="w-100">
+              <input
+                matInput
+                placeholder="Middle Name"
+                formControlName="middleName"
+              />
+            </mat-form-field>
+          </div>
+          <div class="col-md-4 ">
+            <mat-form-field class="w-100">
+              <input
+                matInput
+                placeholder="Last Name"
+                formControlName="lastName"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <mat-form-field class="w-100">
+              <mat-select placeholder="Gender" formControlName="gender">
+                <mat-option
+                  *ngFor="let item of genderList"
+                  [value]="item.value"
+                >
+                  {{ item.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-md-4 ">
+            <mat-form-field class="w-100">
+              <input
+                matInput
+                placeholder="Profession"
+                formControlName="profession"
+              />
+            </mat-form-field>
+          </div>
+          <div class="col-md-4 ">
+            <mat-form-field class="w-100">
+              <input
+                matInput
+                placeholder="Phone Number"
+                formControlName="phoneNumber"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          
+          <div class="col-md-4 ">
+            <mat-form-field class="w-100">
+              <mat-select
+                placeholder="Phone Country"
+                formControlName="phonecountry"
+              >
+                <mat-option *ngFor="let item of countries" [value]="item.code">
+                  {{ item.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-md-4 ">
+            <mat-form-field class="w-100">
+              <input matInput placeholder="Email" formControlName="email" />
+            </mat-form-field>
+          </div>
+          <div class="col-md-4 ">
+            <mat-form-field class="w-100">
+              <input
+                matInput
+                input
+                type="password"
+                placeholder="Password"
+                formControlName="password"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+        
+        <div class="center-button">
+          <button class="next-btn" mat-button matStepperNext [disabled]="firstFormGroup.invalid">
+            Next
+          </button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Specialization</ng-template>
+        <div class="row">
+          <div class="col-md-4 ">
+            <mat-form-field class="w-100">
+              <input
+                matInput
+                placeholder="Category"
+                formControlName="category"
+              />
+            </mat-form-field>
+          </div>
+          <div class="col-md-4 ">
+            <mat-form-field class="w-100">
+              <input
+                matInput
+                placeholder="Description"
+                formControlName="description"
+              />
+            </mat-form-field>
+          </div>
+          <div class="col-md-4 ">
+            <mat-form-field class="w-100">
+              <input
+                matInput
+                placeholder="Qualification"
+                formControlName="qualification"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 ">
+            <mat-form-field class="w-100">
+              <input
+                matInput
+                placeholder="Registration Number"
+                formControlName="registrationNumber"
+              />
+            </mat-form-field>
+          </div>
+          <div class="col-md-4 ">
+            <mat-form-field class="w-100">
+              <input matInput placeholder="Rating" formControlName="rating" />
+            </mat-form-field>
+          </div>
+          <div class="col-md-4 ">
+            <mat-form-field class="w-100">
+              <mat-select
+                placeholder="Specialaization"
+                formControlName="specialaization"
+              >
+                <mat-option
+                  *ngFor="let item of specializationData"
+                  [value]="item._id"
+                >
+                  {{ item.specialization }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="center-button">
+          <button class="back-btn" mat-button matStepperPrevious>Back</button>
+          <button class="next-btn"
+            mat-button
+            matStepperNext
+            [disabled]="secondFormGroup.invalid"
+          >
+            Next
+          </button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup">
+      <form [formGroup]="thirdFormGroup">
+        <ng-template matStepLabel>Address Info</ng-template>
+        <div class="row">
+          <div class="col-md-4 ">
+            <mat-form-field class="w-100">
+              <input
+                matInput
+                placeholder="House/Apt No"
+                formControlName="houseNo"
+              />
+            </mat-form-field>
+          </div>
+          <div class="col-md-4 ">
+            <mat-form-field class="w-100">
+              <mat-select placeholder="Country" formControlName="country">
+                <mat-option *ngFor="let item of countries" [value]="item.code">
+                  {{ item.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-md-4 ">
+            <mat-form-field class="w-100">
+              <input matInput placeholder="State" formControlName="state" />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 ">
+            <mat-form-field class="w-100">
+              <input matInput placeholder="City" formControlName="city" />
+            </mat-form-field>
+          </div>
+          <div class="col-md-4 ">
+            <mat-form-field class="w-100">
+              <input matInput placeholder="Street" formControlName="street" />
+            </mat-form-field>
+          </div>
+          <div class="col-md-4 ">
+            <mat-form-field class="w-100">
+              <input
+                matInput
+                placeholder="Street2 (Oprional)"
+                formControlName="street2"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 ">
+            <mat-form-field class="w-100">
+              <input matInput placeholder="ZIP" formControlName="zip" />
+            </mat-form-field>
+          </div>
+          <div class="col-md-4 ">
+            <mat-form-field class="w-100">
+              <mat-select
+                placeholder="Address Type"
+                formControlName="addressType"
+              >
+                <mat-option
+                  *ngFor="let item of addressType"
+                  [value]="item.value"
+                >
+                  {{ item.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="center-button">
+          <button class="back-btn" mat-button matStepperPrevious>Back</button>
+          <!-- <button mat-button (click) = "stepper.reset()">Reset</button> -->
+          <button class="submit-btn"
+            mat-button
+            [disabled]="thirdFormGroup.invalid"
+            (click)="submitAllInfo()"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

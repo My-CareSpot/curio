@@ -1,0 +1,80 @@
+<div class="content-inner-wrapper">
+  <h2>Edit Assessment Question</h2>
+  <div class="card">
+<div [formGroup]="OptionFormGroup">
+    <mat-form-field>
+      <mat-label> Question Type</mat-label>
+      <input matInput formControlName="assessmentType">
+      <!-- <div></div> -->
+      <!-- <input matInput formControlName="question"> -->
+      <!-- <mat-select formControlName="assessmentType" name="assessmentType">
+        <mat-option >
+          Check
+        </mat-option>
+      </mat-select> -->
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width">
+      <mat-label>question</mat-label>
+      <input matInput formControlName="question">
+    </mat-form-field>
+    <div *ngIf="questionData.assessmentType == 'text' && this.questionData.typeOfAssessment == 'Screening'">
+      <mat-form-field class="example-full-width">
+        <mat-label>Point</mat-label>
+        <input matInput formControlName="textPoint">
+      </mat-form-field>
+
+    </div>
+    
+    <div *ngIf="Optionavailable">
+      <div class="page-heading">
+        <h6>options</h6>
+        <h6 class="cursorAll" (click)="addItem()">
+          <mat-icon class="mat-24">add_circle_outline</mat-icon> Add Options
+        </h6>
+      </div>
+      <div class="repeat-locations" formArrayName="optionValue" *ngIf="questionData.typeOfAssessment != 'Screening'">
+        <div *ngFor="let optionValue of MultipleOption.controls; let i=index" [formGroupName]="i" >
+          <mat-form-field class="example-full-width">
+            <mat-label> Opton {{i+1}}</mat-label>
+            <input matInput formControlName="optionValue">
+          </mat-form-field>
+          
+          <mat-icon *ngIf="i > 1" (click)="removeOptions(i)" class="mat-18 cursorAll">delete_outline
+          </mat-icon>
+        </div>
+
+        
+      </div>
+      <div class="repeat-locations" formArrayName="optionValue"  *ngIf="questionData.typeOfAssessment == 'Screening'">
+        <div *ngFor="let optionValue of MultipleOption.controls; let i=index" [formGroupName]="i">
+          <mat-form-field class="col-md-8">
+            <mat-label> Opton {{i+1}}</mat-label>
+            <input matInput formControlName="optionValue">
+          </mat-form-field>
+          <mat-form-field class="col-md-2">
+            <mat-label> Point {{i+1}}</mat-label>
+            <input matInput formControlName="optionPoint">
+          </mat-form-field>
+          <mat-icon *ngIf="i > 1" (click)="removeOptions(i)" class="mat-18 cursorAll">delete_outline
+          </mat-icon>
+        </div>
+
+      </div>
+
+    </div>
+    <div  class="buttonAlign">
+        <span class="remove">                  
+          <button mat-raised-button routerLink="/dashboard/get-userQuestionInfo">Cancel</button>
+        </span>
+        <span class="update-btn" >                  
+          <button mat-raised-button (click)="updateSurveyForm()">Update</button>
+        </span>       
+      
+    </div>
+    </div>
+    
+
+  </div>
+
+  </div>

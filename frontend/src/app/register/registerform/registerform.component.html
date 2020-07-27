@@ -1,0 +1,344 @@
+<div class="login-section">
+  <div class="login-section-inner">
+    <div class="register-Left col-lg-6 col-md-6 col-sm-12">
+      <!-- <button (click)="goToSignUp()" class="btn btn-primary btn-sign-in">
+        SIGN UP
+      </button> -->
+      <img src="../../../assets/img/Logo.svg" />
+    </div>
+    <div class="login-right col-lg-6 col-md-6 col-sm-12">
+      <mat-card>
+        <mat-card-content>
+          <form [formGroup]="registerForm">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="">First Name</label>
+                  <input
+                    type="text"
+                    required
+                    formControlName="firstName"
+                    placeholder="First Name"
+                    class="form-control"
+                  />
+                  <div
+                    *ngIf="
+                      firstName.invalid &&
+                      (firstName.dirty || firstName.touched)
+                    "
+                    class="error-show"
+                  >
+                    <div *ngIf="firstName.errors.required">
+                      First Name is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="">Middle Name</label>
+                  <input
+                    type="text"
+                    required
+                    formControlName="middleName"
+                    placeholder="Middle Name"
+                    class="form-control"
+                  />
+                  <div
+                    *ngIf="
+                      middleName.invalid &&
+                      (middleName.dirty || middleName.touched)
+                    "
+                    class="error-show"
+                  >
+                    <div *ngIf="middleName.errors.required">
+                      Middle Name is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="">Last Name</label>
+                  <input
+                    type="text"
+                    required
+                    formControlName="lastName"
+                    placeholder="Last Name"
+                    class="form-control"
+                  />
+                  <div
+                    *ngIf="
+                      lastName.invalid && (lastName.dirty || lastName.touched)
+                    "
+                    class="error-show"
+                  >
+                    <div *ngIf="lastName.errors.required">
+                      Last Name is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="">Gender</label>
+                  <select
+                    formControlName="gender"
+                    placeholder="Gender"
+                    class="form-control"
+                  >
+                    <option
+                      *ngFor="let item of genderList"
+                      [value]="item.value"
+                      >{{ item.name }}</option
+                    >
+                  </select>
+                  <div
+                    *ngIf="gender.invalid && (gender.dirty || gender.touched)"
+                    class="error-show"
+                  >
+                    <div *ngIf="gender.errors.required">
+                      Gender is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="">Profession</label>
+                  <input
+                    type="text"
+                    required
+                    formControlName="profession"
+                    placeholder="Profession"
+                    class="form-control"
+                  />
+                  <div
+                    *ngIf="
+                      profession.invalid &&
+                      (profession.dirty || profession.touched)
+                    "
+                    class="error-show"
+                  >
+                    <div *ngIf="profession.errors.required">
+                      Profession is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="">Email</label>
+                  <input
+                    type="text"
+                    required
+                    formControlName="email"
+                    placeholder="Email"
+                    class="form-control"
+                  />
+                  <div
+                    *ngIf="email.invalid && (email.dirty || email.touched)"
+                    class="error-show"
+                  >
+                    <div *ngIf="email.errors.required">
+                      Email is required.
+                    </div>
+                    <div *ngIf="email.errors.email">
+                      Please Enter valid Email .
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="">Phone Number</label>
+                  <input
+                    type="text"
+                    required
+                    formControlName="phoneNumber"
+                    placeholder="Phone Number"
+                    class="form-control"
+                  />
+                  <div
+                    *ngIf="
+                      phoneNumber.invalid &&
+                      (phoneNumber.dirty || phoneNumber.touched)
+                    "
+                    class="error-show"
+                  >
+                    <div *ngIf="phoneNumber.errors.required">
+                      Phone Number is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="">Phone Country</label>
+                  <select
+                    formControlName="phoneCountry"
+                    placeholder="Phone Country"
+                    class="form-control"
+                  >
+                    <option
+                      *ngFor="let item of countries"
+                      [value]="item.code"
+                      >{{ item.name }}</option
+                    >
+                  </select>
+                  <div
+                    *ngIf="
+                      phoneCountry.invalid &&
+                      (phoneCountry.dirty || phoneCountry.touched)
+                    "
+                    class="error-show"
+                  >
+                    <div *ngIf="phoneCountry.errors.required">
+                      Phone Country is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="">Password</label>
+                  <input
+                    type="password"
+                    required
+                    formControlName="password"
+                    placeholder="Password"
+                    class="form-control"
+                  />
+                  <div
+                    *ngIf="
+                      password.invalid && (password.dirty || password.touched)
+                    "
+                    class="error-show"
+                  >
+                    <div *ngIf="password.errors.required">
+                      Password is required.
+                    </div>
+                    <div *ngIf="password.errors.pattern">
+                      Password should be atleast 8 characters long and should
+                      contain one number,one character and one special character
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="">Address</label>
+                  <select
+                    formControlName="address_id"
+                    placeholder="Address"
+                    class="form-control"
+                  >
+                    <option
+                      *ngFor="let item of addressType"
+                      [value]="item.value"
+                      >{{ item.name }}</option
+                    >
+                  </select>
+                  <div
+                    *ngIf="
+                      address_id.invalid &&
+                      (address_id.dirty || address_id.touched)
+                    "
+                    class="error-show"
+                  >
+                    <div *ngIf="address_id.errors.required">
+                      Address is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 text-center">
+                <!-- <button mat-raised-button [disabled]="registerForm.invalid" (click)="registerUser(registerForm.value)" color="primary">REGISTER</button> -->
+                <button
+                  mat-raised-button
+                  (click)="registerUser()"
+                  color="primary"
+                >
+                  REGISTER
+                </button>
+              </div>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="registerWrapper">
+  <form [formGroup]="registerForm">
+    <div class="fields">
+      <label for="">First Name</label>
+      <input type="text" formControlName="firstName" placeholder="First Name" />
+    </div>
+    <div class="fields">
+      <label for="">Middle Name</label>
+      <input
+        type="text"
+        formControlName="middleName"
+        placeholder="Middle Name"
+      />
+    </div>
+    <div class="fields">
+      <label for="">Last Name</label>
+      <input type="text" formControlName="lastName" placeholder="Last Name" />
+    </div>
+    <div class="fields">
+      <label for="">Gender</label>
+      <select formControlName="gender">
+        <option *ngFor="let item of genderList" [value]="item.value">{{
+          item.name
+        }}</option>
+      </select>
+    </div>
+    <div class="fields">
+      <label for="">Profession</label>
+      <input
+        type="text"
+        formControlName="profession"
+        placeholder="Profession"
+      />
+    </div>
+    <div class="fields">
+      <label for="">Email</label>
+      <input type="text" formControlName="email" placeholder="Email" />
+    </div>
+    <div class="fields">
+      <label for="">Phone Number</label>
+      <input
+        type="number"
+        formControlName="phoneNumber"
+        placeholder="Phone Number"
+      />
+    </div>
+    <div class="fields">
+      <label for="">Phone Country</label>
+      <select formControlName="phoneCountry">
+        <option *ngFor="let item of countries" [value]="item.value">{{
+          item.name
+        }}</option>
+      </select>
+    </div>
+    <div class="fields">
+      <button
+        class="btn-primary"
+        [disabled]="registerForm.invalid"
+        (click)="registerUser(registerForm.value)"
+      >
+        REGISTER
+      </button>
+    </div>
+  </form>
+</div> -->

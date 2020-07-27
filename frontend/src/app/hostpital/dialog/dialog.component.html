@@ -1,0 +1,51 @@
+<div class="custum-modal">
+  <h2 mat-dialog-title>Add Patient</h2>
+
+  <div mat-dialog-content [formGroup]="form">
+    <div class="row">
+      <div class="col-sm-12">
+        <form novalidate [formGroup]="form">
+          <mat-form-field class="w-60">
+            <input matInput placeholder="Email" formControlName="email" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Select Country</mat-label>
+            <mat-select formControlName="country">
+              <mat-option
+                *ngFor="let item of countriesList"
+                [value]="item.code"
+              >
+                {{ item.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="w-60">
+            <input
+              matInput
+              placeholder="Phone No"
+              formControlName="phoneNumber"
+            />
+          </mat-form-field>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="submit_referal">
+    <button
+      class="mat-raised-button close-btn-modal closebtn"
+      (click)="close()"
+    >
+      Close</button
+    >&nbsp;
+
+    <button
+      [disabled]="form.invalid"
+      class="mat-raised-button save-btn-modal"
+      (click)="save()"
+    >
+      Save
+    </button>
+  </div>
+</div>

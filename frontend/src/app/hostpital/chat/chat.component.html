@@ -1,0 +1,152 @@
+<div class="content-inner-wrapper">
+    <div class="container">
+        <div class="messaging">
+            <div class="inbox_msg">
+                <div class="inbox_people">
+                    <div class="headind_srch">
+                        <div class="recent_heading">
+                            <h4>Patient's List</h4>
+                        </div>
+                        <div class="srch_bar">
+                            <div class="stylish-input-group">
+                                <input type="text" class="search-bar" [(ngModel)]="isSearch" (keyup)="searchPatient()"
+                                    placeholder="Search Patient">
+                                <span class="input-group-addon">
+                                    <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                                </span> </div>
+                        </div>
+                    </div>
+                    <div class="inbox_chat">
+                        <div *ngFor="let element of patientList">
+                            <div class="chat_list" (click)="join(element)" style="cursor: pointer;">
+                                <div class="chat_people">
+                                    <div class="chat_img"> <img src="../../../../assets/img/nicolas-profile.png" />
+                                    </div>
+                                    <div class="chat_ib">
+                                        <h5>{{element.firstName}} {{element.lastName}}
+                                            <!-- <span class="chat_date">Dec 25</span> -->
+                                        </h5>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="mesgs">
+                    <h2 style="border-bottom: 2px solid grey;">{{currentUser}}</h2>
+                    <div #scrollMe class="msg_history" id="msgHistroy">
+
+                        <div *ngFor="let eachmsg of mesgArray">
+                            <div class="incoming_msg" *ngIf="user_id != eachmsg._id ">
+                                <div class="incoming_msg_img"> <img src="../../../../assets/img/nicolas-profile.png" />
+                                </div>
+                                <div class="received_msg">
+                                    <div class="received_withd_msg" style="overflow-wrap: break-word;"
+                                        *ngIf="eachmsg.text">
+                                        <p>{{eachmsg.text}}</p>
+                                        <span class="time_date"> {{eachmsg['createdAt'] | date:'shortTime'}} |
+                                            {{eachmsg['createdAt'] | date}}</span>
+                                    </div>
+                                    <div class="received_msg_img"
+                                        style="overflow-wrap: break-word;position: relative;"
+                                        *ngIf="eachmsg.image && eachmsg.imageType=='1'">
+                                        <img src="{{srcUrl}}{{eachmsg.image}}" alt="" class="ImageNow"
+                                        (click)="showImage(eachmsg.image,eachmsg['imageName'])"  />
+                                        <span class="time_date">{{eachmsg['imageName']}} |
+                                            {{eachmsg['createdAt'] | date:'shortTime'}} |
+                                            {{eachmsg['createdAt'] | date}}</span>
+                                    </div>
+                                    <div class="received_msg_img"
+                                        style="overflow-wrap: break-word;position: relative;"
+                                        *ngIf="eachmsg.image && eachmsg.imageType=='2'">
+                                        <img src="../../../../assets/img/pdf.png" alt="" class="ImageNow"
+                                            (click)="downloadPdf(eachmsg.image,eachmsg.imageName)" />
+                                        <span class="time_date">{{eachmsg['imageName']}} |
+                                            {{eachmsg['createdAt'] | date:'shortTime'}} |
+                                            {{eachmsg['createdAt'] | date}}</span>
+                                    </div>
+                                    <div class="received_msg_img"
+                                        style="overflow-wrap: break-word;position: relative;"
+                                        *ngIf="eachmsg.image && eachmsg.imageType=='3'">
+                                        <img src="../../../../assets/img/file.png" alt="" class="ImageNow"
+                                            (click)="downloadPdf(eachmsg.image,eachmsg.imageName)" />
+                                        <span class="time_date">{{eachmsg['imageName']}} |
+                                            {{eachmsg['createdAt'] | date:'shortTime'}} |
+                                            {{eachmsg['createdAt'] | date}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="outgoing_msg" *ngIf="user_id == eachmsg._id ">
+                                <div class="sent_msg" style="overflow-wrap: break-word;" *ngIf="eachmsg.text">
+                                    <p>{{eachmsg.text}}</p>
+                                    <span class="time_date"> {{eachmsg['createdAt'] | date:'shortTime'}} |
+                                        {{eachmsg['createdAt'] | date}}</span>
+                                </div>
+                                <div class="sent_msg_img" style="overflow-wrap: break-word;position: relative;"
+                                    *ngIf="eachmsg.image && eachmsg.imageType=='1'">
+                                    <img src="{{srcUrl}}{{eachmsg.image}}" alt="" class="ImageNow"
+                                        (click)="showImage(eachmsg.image,eachmsg['imageName'])" />
+                                    <span class="time_date">{{eachmsg['imageName']}} |
+                                        {{eachmsg['createdAt'] | date:'shortTime'}} |
+                                        {{eachmsg['createdAt'] | date}}</span>
+                                </div>
+                                <div class="sent_msg_img" style="overflow-wrap: break-word;position: relative;"
+                                    *ngIf="eachmsg.image && eachmsg.imageType=='2'">
+                                    <img src="../../../../assets/img/pdf.png" alt="" class="ImageNow"
+                                        (click)="downloadPdf(eachmsg.image,eachmsg.imageName)" />
+                                    <span class="time_date"> {{eachmsg['imageName']}} |
+                                        {{eachmsg['createdAt'] | date:'shortTime'}} |
+                                        {{eachmsg['createdAt'] | date}}</span>
+                                </div>
+                                <div class="sent_msg_img" style="overflow-wrap: break-word;position: relative;"
+                                    *ngIf="eachmsg.image && eachmsg.imageType=='3'">
+                                    <img src="../../../../assets/img/file.png" alt="" class="ImageNow"
+                                        (click)="downloadPdf(eachmsg.image,eachmsg.imageName)" />
+                                    <span class="time_date"> {{eachmsg['imageName']}} |
+                                        {{eachmsg['createdAt'] | date:'shortTime'}} |
+                                        {{eachmsg['createdAt'] | date}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="type_msg" *ngIf="currentUser">
+                        <div class="input_msg_write">
+
+                            <input type="text" class="write_msg" (keyup.enter)="sendMessage()"
+                                placeholder="Type a message" [(ngModel)]="enterMessage" />
+                            <div class="edit-profile">
+                                <input #myInput class="fileU" type="file" (change)="uploadImage($event)" />
+                                <mat-icon style="color: #05728f; cursor: pointer;">attachment</mat-icon>
+                            </div>
+                            <div class="edit-profile1">
+                                <input class="fileU" (click)="sendMessage()" (keyup.enter)="sendMessage()" />
+                                <mat-icon style="color: #05728f; cursor: pointer;">send</mat-icon>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">{{selectedImgName}}</h4>
+            </div>
+            <div class="modal-body">
+                <img src="{{imagepreview}}" id="imagepreview" style="width: 425px; height: 425px;">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" (click)="hide()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

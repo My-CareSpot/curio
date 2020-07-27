@@ -1,0 +1,127 @@
+<div class="content-inner-wrapper">
+  <h2>Add Journal Question</h2>
+
+  <div class="card" [formGroup]="AllQuestionForm">
+    <mat-card formArrayName="questions"
+      *ngFor="let question of AllQuestionForm.get('questions')['controls']; let qi = index; let count = count"
+      class="questionscard" class="questionscard">
+      <mat-icon (click)="gobackAllSurvey()" class="backButton cursorAll">keyboard_backspace</mat-icon>
+      <div class="" [formGroupName]="qi">
+        <div class="back-title">
+          <h3>Journal </h3>
+        </div>
+
+        <div class="add-survey-inner">
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field>
+                <mat-label> Journal Type</mat-label>
+                <mat-select formControlName="journalType" name="journalType">
+                  <mat-option *ngFor="let journalType of journalTypes" [value]="journalType.value"
+                    [selected]="journalType.value=='checkbox'">
+                    {{journalType.viewValue}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="AllQuestionForm.get('questions')['controls'][qi].controls.journalType.invalid ">
+                  Journal Type is invalid
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field class="example-full-width">
+                <mat-label>Add Journal</mat-label>
+                <textarea matInput formControlName="question"></textarea>
+                <mat-error *ngIf="AllQuestionForm.get('questions')['controls'][qi].controls.question.invalid ">
+                  Journal is invalid
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6" style="padding-bottom: 4vh;">
+              <div>
+                <input type="file" #myInputImage (change)="uploadImage($event)" />
+              </div>
+            </div>
+            <div class="col-md-6" *ngIf=" AllQuestionForm.get('questions')['controls'][qi].controls.journalType.value  == 'text' &&
+                 journalType == 'Screening' ">
+              <mat-form-field class="example-full-width">
+                <mat-label>Point</mat-label>
+                <input type="number" matInput formControlName="textPoint">
+                <mat-error *ngIf="AllQuestionForm.get('questions')['controls'][qi].controls.textPoint.invalid ">
+                  Point is invalid
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <ng-container *ngIf=" AllQuestionForm.get('questions')['controls'][qi].controls.journalType.value  == 'radio'
+               ||  AllQuestionForm.get('questions')['controls'][qi].controls.journalType.value == 'checkbox' ">
+          <div class="option-sec">
+            <div class="heading-inner">
+              <h3>Options</h3>
+              <h6 class="cursorAll option-add" (click)="addItem(qi)" *ngIf="action != 'quiz'">
+                <i class="fa fa-plus-circle" aria-hidden="true" style="font-size: 30px; color: #1b82d4;"></i>
+              </h6>
+            </div>
+            <div class="row ">
+              <div formArrayName="options"
+                *ngFor="let item of AllQuestionForm.get('questions')['controls'][qi].controls.options['controls']; let i = index;"
+                class="col-md-6 ">
+                <div *ngIf="journalType == 'Screening'">
+                  <div [formGroupName]="i">
+                    <div class="col-md-10 fields">
+                      <mat-form-field>
+                        <mat-label> option {{i+1}}</mat-label>
+                        <input matInput formControlName="optionValue">
+                        <mat-error
+                          *ngIf="AllQuestionForm.get('questions')['controls'][qi].controls.options['controls'][i]. controls.optionValue.invalid ">
+                          option {{i+1}} is invalid
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-md-5 ">
+                      <mat-form-field>
+                        <mat-label> Point {{i+1}}</mat-label>
+                        <input type="number" matInput formControlName="optionPoint">
+                        <mat-error
+                          *ngIf="AllQuestionForm.get('questions')['controls'][qi].controls.options['controls'][i]. controls.optionPoint.invalid ">
+                          point {{i+1}} is invalid
+                        </mat-error>
+                      </mat-form-field>
+                      <mat-icon *ngIf="i > 1 && action == 'question'" (click)="removeOptions(qi,i)"
+                        class="mat-18 cursorAll">
+                        <i class="fa fa-minus-circle" aria-hidden="true" style="font-size: 30px; color:red;"></i>
+                      </mat-icon>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="journalType != 'Screening'">
+                  <div [formGroupName]="i">
+                    <mat-form-field>
+                      <mat-label> option {{i+1}}</mat-label>
+                      <input matInput formControlName="optionValue">
+                      <mat-error
+                        *ngIf="AllQuestionForm.get('questions')['controls'][qi].controls.options['controls'][i]. controls.optionValue.invalid ">
+                        option {{i+1}} is invalid
+                      </mat-error>
+                    </mat-form-field>
+                    <mat-icon *ngIf="i > 1 && action == 'question'" (click)="removeOptions(qi,i)"
+                      class="mat-18 cursorAll">
+                      <i class="fa fa-minus-circle" aria-hidden="true" style="font-size: 30px; color:red;"></i>
+                    </mat-icon>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+
+      <div class="btn-sec">
+        <button (click)="gobackAllSurvey()" class="remove">Remove</button>
+        <button [disabled]="AllQuestionForm.get('questions').invalid" (click)="submitSurveyForm()"
+          class="save-btn-modal">Save</button>
+      </div>
+    </mat-card>
+  </div>
+
+</div>

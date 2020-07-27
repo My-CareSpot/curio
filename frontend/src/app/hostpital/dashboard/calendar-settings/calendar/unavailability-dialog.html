@@ -1,0 +1,152 @@
+<h1 mat-dialog-title>
+  Book Appointment
+</h1>
+<div class="book-appointement">
+  <div mat-dialog-content>
+    <form [formGroup]="unavailabilityForm">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="space-btw-inputext">
+              <mat-form-field class="example-full-width">
+                <span matPrefix>
+                  <i class="material-icons">person</i>
+                </span>
+                <mat-select
+                  formControlName="unavailabilityType"
+                  placeholder="Select unavailability type"
+                >
+                  <mat-option *ngFor="let type of types" [value]="type"
+                    >{{type}}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="space-btw-inputext">
+              <mat-checkbox
+                (change)="onRepeatChange($event)"
+                formControlName="isRepeat"
+                >Repeat</mat-checkbox
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12" *ngIf="showRepeatTypes">
+          <div class="row">
+            <mat-radio-group
+              (change)="onRepeatTypeChange($event)"
+              aria-labelledby="example-radio-group-label"
+              class="example-radio-group"
+              formControlName="repeatType"
+            >
+              <mat-radio-button
+                class="example-radio-button"
+                *ngFor="let type of repeatTypes"
+                [value]="type"
+              >
+                {{type}}
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="row" *ngIf="showInputs">
+            <div class="col-sm-6">
+              <div class="space-btw-inputext">
+                <mat-form-field class="example-full-width">
+                  <span matPrefix>
+                    <i class="material-icons"> date_range</i>
+                  </span>
+                  <input
+                    type="number"
+                    (ngModelChange)="onNumberOfWeekChange($event)"
+                    matInput
+                    min="1"
+                    placeholder="Choose number of weeks"
+                    formControlName="noOfWeeks"
+                  />
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="space-btw-inputext">
+                <mat-form-field class="example-full-width">
+                  <span matPrefix>
+                    <i class="material-icons"> date_range</i>
+                  </span>
+                  <input
+                    matInput
+                    [matDatepicker]="weeklyEndDate"
+                    placeholder="End date"
+                    formControlName="endDate"
+                    readonly
+                  />
+                  <mat-datepicker-toggle matSuffix [for]="weeklyEndDate">
+                  </mat-datepicker-toggle>
+                  <mat-datepicker
+                    #weeklyEndDate
+                    disabled="true"
+                  ></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12" *ngIf="showInputs">
+            <label
+              class="days-margin"
+              formArrayName="week"
+              *ngFor="let order of unavailabilityForm.get('week')['controls']; let i = index"
+            >
+              <mat-checkbox
+                [disabled]="weekData[i].isDisable"
+                (change)="onDaySelect($event)"
+                [formControlName]="i"
+                class="days-margin"
+                [checked]="weekData[i].isChecked ? weekData[i].isChecked : false"
+              ></mat-checkbox>
+              {{weekData[i].name}}
+            </label>
+          </div>
+        </div>
+        <!-- <div>
+                    <p>Do you confirm the {{type}} on {{date}} at {{sTime}} to {{eTime}}</p>
+                </div> -->
+      </div>
+    </form>
+    <form class="bookApp" [formGroup]="bookAppointmentForm" *ngIf="isBookApp">
+      <div class="space-btw-inputext">
+        <mat-form-field class="example-full-width">
+          <mat-select
+            formControlName="patient_user_id"
+            placeholder="Select Patient"
+          >
+            <mat-option *ngFor="let item of patientList" [value]="item.user_id"
+              >{{item.firstName}} {{item.lastName}}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </form>
+    <div mat-dialog-actions>
+      <button mat-button mat-dialog-close class="btn-close">Cancel</button>
+      <button
+        mat-button
+        *ngIf="!isBookApp"
+        (click)="bookUnavailability()"
+        [disabled]="unavailabilityForm.invalid"
+        class="btn-close"
+      >
+        Confirm
+      </button>
+      <button
+        mat-button
+        *ngIf="isBookApp"
+        (click)="bookAppointment()"
+        [disabled]="bookAppointmentForm.invalid"
+        class="btn-close"
+      >
+        Book
+      </button>
+    </div>
+  </div>
+</div>

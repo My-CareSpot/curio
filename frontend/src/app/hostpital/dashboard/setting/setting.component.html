@@ -1,0 +1,98 @@
+<div class="content-inner-wrapper">
+  <h2>Time Settings</h2>
+
+  <div class="settingWrapper">
+    <form [formGroup]="settingForm">
+      <div class="fields">
+        <label for="">Range:</label>
+        <input
+          type="range"
+          min="1"
+          max="7"
+          value="{{ range }}"
+          formControlName="range"
+          class="rangeBar"
+        />
+        {{ range }}
+      </div>
+      <div class="fields">
+        <label for="">Available In Morning:</label>
+        <input type="checkbox" formControlName="isMorning" />
+
+        <div *ngIf="ismorning === true">
+          <input
+            class="setTime"
+            formControlName="morningstarttime"
+            [owlDateTime]="dtPicker1"
+            [owlDateTimeTrigger]="dtPicker1"
+            placeholder="Start time"
+          />
+          <owl-date-time [pickerType]="'timer'" #dtPicker1></owl-date-time>
+          <input
+            class="setTime"
+            formControlName="morningendtime"
+            [owlDateTime]="dtPicker2"
+            [owlDateTimeTrigger]="dtPicker2"
+            placeholder="End time"
+          />
+          <owl-date-time [pickerType]="'timer'" #dtPicker2></owl-date-time>
+        </div>
+      </div>
+      <div class="fields">
+        <label for="">Available In Afternoon:</label>
+        <input type="checkbox" formControlName="isAfternoon" />
+
+        <div *ngIf="isafternoon === true">
+          <input
+            class="setTime"
+            formControlName="afternoonstarttime"
+            [owlDateTime]="dtPicker3"
+            [owlDateTimeTrigger]="dtPicker3"
+            placeholder="Start time"
+          />
+          <owl-date-time [pickerType]="'timer'" #dtPicker3></owl-date-time>
+          <input
+            class="setTime"
+            formControlName="afternoonendtime"
+            [owlDateTime]="dtPicker4"
+            [owlDateTimeTrigger]="dtPicker4"
+            placeholder="End time"
+          />
+          <owl-date-time [pickerType]="'timer'" #dtPicker4></owl-date-time>
+        </div>
+      </div>
+      <div class="fields">
+        <label for="">Available In Evening:</label>
+        <input type="checkbox" formControlName="isEvening" />
+
+        <div *ngIf="isevening === true">
+          <input
+            class="setTime"
+            formControlName="eveningstarttime"
+            [owlDateTime]="dtPicker5"
+            [owlDateTimeTrigger]="dtPicker5"
+            placeholder="Start time"
+          />
+          <owl-date-time [pickerType]="'timer'" #dtPicker5></owl-date-time>
+          <input
+            class="setTime"
+            formControlName="eveningendtime"
+            [owlDateTime]="dtPicker6"
+            [owlDateTimeTrigger]="dtPicker6"
+            placeholder="End time"
+          />
+          <owl-date-time [pickerType]="'timer'" #dtPicker6></owl-date-time>
+        </div>
+      </div>
+      <div class="fields">
+        <button
+          [disabled]="settingForm.invalid"
+          class="mat-raised-button save-btn-modal"
+          (click)="saveTiming(settingForm.value)"
+        >
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="custum-modal">
+    <h2 mat-dialog-title>Journal Name</h2>
+    <form  class="formStatus">
+      <mat-form-field class="example-full-width">
+        <mat-label>Journal Name</mat-label>
+        <input matInput placeholder="Journal Name *"  [(ngModel)]="assignmentName" (keyup)="keupFunc()" name="assignment" />
+      </mat-form-field>
+      
+      <!-- <mat-radio-group aria-label="Select an option" name="options" [(ngModel)]="assignmentOption" >
+        <mat-radio-button value="Normal" >Normal Journal</mat-radio-button>
+        <mat-radio-button value="Screening">Screening Journal</mat-radio-button>
+      </mat-radio-group> -->
+    </form>
+  
+  
+    <div class="submit_referal">
+      <button
+        class="mat-raised-button close-btn-modal closebtn"
+        (click)="close()"
+      >
+        Close</button
+      >&nbsp;
+  
+      <button
+        [disabled]="assignmentName == undefined || assignmentName == ''"
+        class="mat-raised-button save-btn-modal"
+        (click)="saveJournal()"
+      >
+        Save
+      </button>
+    </div>
+  
+    <!-- <div class="submit_referal">
+                  <button class="btn" style="background: grey;"
+                  (click)="close()">
+              Close
+              </button>&nbsp;
+              
+              <button  class="btn btn-primary"
+                  (click)="saveAssignment()" [disabled]="assignmentName == undefined || assignmentName == ''">
+              Save
+              </button>
+              </div> -->
+  </div>
+  

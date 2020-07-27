@@ -1,0 +1,75 @@
+<div class="content-inner-wrapper">
+    <h2>Journal List</h2>
+
+    <div class="search-patient" style="float: right;">
+      
+      <div class="btn-se">
+        <button type="submit" class="btn btn-add-con" [routerLink]="['/dashboard/journal-patient']">
+          Assign to Patient
+        </button>
+      </div>
+      <div class="btn-se">
+        <button type="submit" class="btn btn-add-con" (click)="openDialogforAssignjournal()">
+          + Add New Journal
+        </button>
+      </div>
+    </div>   
+
+    <div class="table-responsive">
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        class="mat-elevation-z8 conditions_alignment_tab"
+        matSort
+      >
+        <ng-container matColumnDef="Name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Journal List</th>
+          <td mat-cell *matCellDef="let element">{{element.name}}</td>
+        </ng-container>
+
+        
+        <ng-container matColumnDef="AssessementType">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Journal Type
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.journal_type || "Normal"}}
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="CreateAt">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Created  On
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.fromDate | date}}
+          </td>
+        </ng-container> 
+        
+        
+  
+        <ng-container matColumnDef="Action">
+          <th mat-header-cell *matHeaderCellDef class="action">Actions</th>
+          <td mat-cell *matCellDef="let element" class="edit-open-img text-left">
+            <i class="fa fa-trash delete-icon" aria-hidden="true" 
+             title="Delete Journal" (click)="deletjournalRel(element,'journal')"></i>  
+            <i class="fa fa-pencil-square-o" aria-hidden="true" style="cursor: pointer;"
+             title="Open Journal Page" (click)="openjournalPage(element)"></i>
+  
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+  
+      <mat-paginator
+        [length]="totalCount"
+        [pageSize]="defaultCount"
+        [pageSizeOptions]="paginate"
+        showFirstLastButtons
+        (page)="paginatePage($event)"
+      >
+      </mat-paginator>
+    </div>
+  </div>

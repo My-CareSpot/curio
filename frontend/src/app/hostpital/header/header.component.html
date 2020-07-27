@@ -1,0 +1,104 @@
+<header class="dashboard-header">
+  <div class="logo-sidebar"><img src="../../../assets/img/Logo.svg" /></div>
+  <i class="hamburger" (click)="toggleSidebar()"
+    ><img src="../../../assets/img/Hamburger.svg"
+  /></i>
+  <ul>
+    <li>
+      <a (click)="openMessages()"
+        ><img src="../../../assets/img/Chat_Icon.svg"
+      /></a>
+    </li>
+    <li style="position: relative;">
+      <a (click)="openVideoNotifications()"
+        ><img src="../../../assets/img/video-chat.svg" class="videochat" />
+        <span class="numberShow">{{ videoCallNotificationLength }}</span>
+      </a>
+    </li>
+
+    <li style="position: relative;">
+      <a (click)="showNotification()">
+        <img src="../../../assets/img/bellicon.png" style="width: 30px;" />
+        <span class="numberShow">{{ notificationNumber }}</span>
+      </a>
+      <div class="notificationsArea" id="noti">
+        <div class="notiy" *ngFor="let item of notificationList">
+          <div (click)="readNotification(item)">
+            <span class="title">{{ item.message }}</span>
+            <span class="description">{{ item.description }}</span>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <div class="dropdown">
+        <button
+          type="button"
+          class="btn dropdown-toggle"
+          data-toggle="dropdown"
+          (click)="showLogout()"
+        >
+          {{ userData?.firstName }}
+        </button>
+        <div class="dropdown-menu" id="dropDown">
+          <a class="dropdown-item" (click)="logout()">
+            <i class="fa fa-power-off" aria-hidden="true"></i>
+            Sign Out
+          </a>
+        </div>
+      </div>
+      <!-- <a href="">{{userRoles.patient == userRoleId ? 'Mr. Hafeez' : 'Dr. Kewin Luis'}} <img src="../../../../assets/img/small-down.svg"></a>
+        </li> -->
+    </li>
+
+    <li>
+      <a (click)="openProfile()" class="last-child"
+        ><img src="../../../assets/img/Avatar.png"
+      /></a>
+    </li>
+  </ul>
+</header>
+
+<ng-template>
+  <!-- <div class="fixed-search" (click)="toggleSearch()">
+    <img src="../../../../assets/img/search.svg" />
+    <span>QUICK LINK</span>
+  </div> -->
+
+  <div class="search-content">
+    <ul>
+      <!-- <li *ngFor="let link of quickLinkList">
+                <a (click)="quickLinkSelected(link.name)">
+                    <img src="{{link.imgSrc}}">
+                    {{link.name}} </a>
+            </li> -->
+    </ul>
+    <!-- <ul>
+        <li><a (click)="quickLinkSelected('View Test result')"><img
+                    src="../../../../assets/img/view_test_result.svg">View </a></li>
+        <li><a (click)="quickLinkSelected('Schedule Appointment')"><img
+                    src="../../../../assets/img/schedule_appointement_link.svg">Schedule Appointment</a></li>
+        <li><a (click)="quickLinkSelected('Send Message')"><img src="../../../../assets/img/send-msg-right.svg">Send
+                Message</a></li>
+        <li><a (click)="quickLinkSelected('Pay Bill')"><img src="../../../../assets/img/pay-bill.svg">Pay Bill</a></li>
+        <li><a (click)="quickLinkSelected('Health Summary')"><img src="../../../../assets/img/health_summary.svg">Health
+                Summary</a></li>
+    </ul> -->
+  </div>
+
+  <!-- <div class="search-content" *ngIf="userRoles.provider == userRoleId">
+        <mat-form-field appearance="outline" class="border-material">
+            <mat-label>Search</mat-label>
+            <input matInput type="search" placeholder="Search" (input)="applyFilter($event.target.value)">
+            <!-- <mat-hint>Hint</mat-hint> -->
+  <!-- </mat-form-field>
+        <ul>
+            <li *ngFor="let link of quickLinkListForProviders">
+                <a>
+                    <img src="{{link.imgSrc}}">
+                    {{link.name}} </a>
+            </li>
+        </ul>
+    </div> -->
+</ng-template>

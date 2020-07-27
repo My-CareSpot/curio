@@ -1,0 +1,3259 @@
+{
+  "swagger": "2.0",
+  "title": "CURIO Api Swagger",
+  "description": "Swagger Api Tool for CURIO api",
+  "license": {
+    "name": "MIT",
+    "url": "https://opensource.org/licenses/MIT"
+  },
+  "version": "1.0.0",
+  "host": "54.190.192.105:5015",
+  "basePath": "/api",
+  "schemes": ["http", "https"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "securityDefinitions": {
+    "JWT": {
+      "type": "curio",
+      "in": "query",
+      "name": "curio"
+    }
+  },
+  "security": [
+    {
+      "JWT": []
+    }
+  ],
+  "responses": {
+    "UnauthorizedError": {
+      "description": "Access token is missing or invalid"
+    }
+  },
+  "paths": {
+    "/register": {
+      "post": {
+        "tags": ["Common Module"],
+        "summary": "Register A User",
+        "description": "Register A User",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Register A User",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/registerUser"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/get-notification": {
+      "post": {
+        "tags": ["Common Module"],
+        "summary": "Get Notification",
+        "description": "Get Notification",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Get Notification",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/getNotification"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/check-timing": {
+      "post": {
+        "tags": ["Video Module"],
+        "summary": "Check Appointment Time",
+        "description": "Check Appointment Time",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Check Appointment Time",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/checkTiming"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/send-link": {
+      "post": {
+        "tags": ["Patient Module"],
+        "summary": "Send Link To Register Patient",
+        "description": "Send Link To Register Patient",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Send Link To Register Patient",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/sendLink"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/add-address": {
+      "post": {
+        "tags": ["Common Module"],
+        "summary": "Add User Address",
+        "description": "Add User Address",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Add User Address",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/adduseraddress"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/hospital-setting": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "Hospital Timing Setting",
+        "description": "Hospital Timing Setting",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Hospital Timing Setting",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/hospitalSetting"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/get-appointnment-request": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "Get Appointment Request",
+        "description": "Get Appointment Request",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Get Appointment Request",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/getAppointmentRequest"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": ["Common Module"],
+        "summary": "Login A User",
+        "description": "Login A User",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Login A User",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/login"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/send-miss-call-notification": {
+      "post": {
+        "tags": ["Video Module"],
+        "summary": "Send Miss Call Notification to Doctor",
+        "description": "Send Miss Call Notification to Doctor",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Send Miss Call Notification to Doctor",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/sendMissCallNotification"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/decline-video-call-patient": {
+      "post": {
+        "tags": ["Video Module"],
+        "summary": "Decline Video Call",
+        "description": "Decline Video Call",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Decline Video Call",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/declineVideoCall"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/get-symptom": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "Get Symptom",
+        "description": "Get Symptom",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Get Symptom",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/getSymptom"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/change-preference": {
+      "post": {
+        "tags": ["User Module"],
+        "summary": "Change User Notification Prefrence",
+        "description": "Change User Notification Prefrence",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Change User Notification Prefrence",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/changeUserPrefrence"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/get-sideeffect": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "Get Side Effect",
+        "description": "Get Side Effect",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Get Side Effect",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/getSideEffect"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/get-video-token": {
+      "post": {
+        "tags": ["Video Module"],
+        "summary": "Generate Video Token",
+        "description": "Generate Video Token",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Generate Video Token",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/generateVideoToken"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/update-sideeffect": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "Update Side Effect",
+        "description": "Update Side Effect",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Update Side Effect",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/updateSideEffect"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/get-hospital-timing": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "Get Hospital Timing",
+        "description": "Get Hospital Timing",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Get Hospital Timing",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/getHospitalTiming"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/update-symptom": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "Update Symptom",
+        "description": "Update Symptom",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Update Symptom",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/updateSymptom"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/delete-symptom": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "Delete Symptom",
+        "description": "Delete Symptom",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Delete Symptom",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/DeleteSymptom"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/delete-sideeffect": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "Delete Side Effect",
+        "description": "Delete Side Effect",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Delete Side Effect",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/DeleteSideEffect"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/update-hospital-timing": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "Update Hospital Timing",
+        "description": "Update Hospital Timing",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Update Hospital Timing",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/updateHospitalTiming"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/add-hobby": {
+      "post": {
+        "tags": ["Patient Module"],
+        "summary": "Add a hobby",
+        "description": "Add a hobby",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Add a hobby",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/addHobbies"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/get-hobbies": {
+      "post": {
+        "tags": ["Patient Module"],
+        "summary": "Get All Hobbies",
+        "description": "Get All Hobbies",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Get All Hobbies",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/getHobbies"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/add-hospital": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "Add Hospital Details",
+        "description": "Add Hospital Details",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Add Hospital Details",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/addHospitalDetail"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/get-patients": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "Get Patients Of Hospital",
+        "description": "Get Patients Of Hospital",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Get Patients Of Hospital",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/getpatients"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/get-patient-detail": {
+      "post": {
+        "tags": ["Patient Module"],
+        "summary": "Get Patients Details",
+        "description": "Get Patients Details",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Get Patients Details",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/getPatientDetail"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/get-care-appointment": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "Get Care Team Member Appointments",
+        "description": "Get Care Team Member Appointments",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Get Care Team Member Appointments",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/getCareTeamAppointments"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/get-care-member-appointments": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "Get Care Team Individual Appointments",
+        "description": "Get Care Team Individual Appointments",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Get Care Team Individual Appointments",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/getCareTeamOwnAppointments"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/get-patient-pending-request": {
+      "post": {
+        "tags": ["Patient Module"],
+        "summary": "Get Patient Pending Request List",
+        "description": "Get Patient Pending Request List",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Get Patient Pending Request List",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/getpatientpendingrequest"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/get-patient-accepted-request": {
+      "post": {
+        "tags": ["Patient Module"],
+        "summary": "Get Patient Completed Request List",
+        "description": "Get Patient Completed Request List",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Get Patient Completed Request List",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/getpatientcompletedrequest"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/get-care-completed-appointment": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "Get Care Team Member Appointments",
+        "description": "Get Care Team Member Appointments",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Get Care Team Member Appointments",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/getCareTeamCompletedAppointments"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/send-video-call-notification": {
+      "post": {
+        "tags": ["Video  Module"],
+        "summary": "Send Video call Notification To Care Taker",
+        "description": "Send Video call Notification To Care Taker",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Send Video call Notification To Care Taker",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/sendVideoCallNotification"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/add-patient": {
+      "post": {
+        "tags": ["Patient Module"],
+        "summary": "Add Patient To Hospital",
+        "description": "Add Patient To Hospital",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Add Patient To Hospital",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/addPatientHospital"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/assign-hobby": {
+      "post": {
+        "tags": ["Patient Module"],
+        "summary": "Assign Hobby To Patient",
+        "description": "Assign Hobby To Patient",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Assign Hobby To Patient",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/assignHobbyToPatient"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/add-medicine": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "Add Medicine",
+        "description": "Add Medicine",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Add Medicine",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/addMedicine"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/add-dosage": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "Add Dosage",
+        "description": "Add Dosage",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Add Dosage",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/addDosage"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/add-specialization": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "Add Specialization",
+        "description": "Add Specialization",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Add Specialization",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/addspecialization"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/get-patient-careteam": {
+      "post": {
+        "tags": ["Patient Module"],
+        "summary": "Get Patient Care Team List",
+        "description": "Get Patient Care Team List",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Get Patient Care Team List",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/getPatientCareTeam"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/get-dosage": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "GEt Dosage",
+        "description": "GEt Dosage",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "GEt Dosage",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/getDosage"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/add-symptom": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "Add Symptom",
+        "description": "Add Symptom",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Add Symptom",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/addSymptom"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/add-sideeffect": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "Add sideeffect",
+        "description": "Add sideeffect",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Add sideeffect",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/addSideEffect"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/add-caretaker": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "Add Care Taker",
+        "description": "Add Care Taker",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Add Care Taker",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/addCareTaker"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/get-symptom-list": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "Get Symptom and sideeffect list",
+        "description": "Get Symptom and sideeffect list",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Get Symptom and sideeffect list",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/getSymptoms"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/get-program-analysis": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "Get Legend list",
+        "description": "Get Legend list",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Get Legend list",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/getProgramAnalysis"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/select-hobby": {
+      "post": {
+        "tags": ["Patient Module"],
+        "summary": "Select Hobby Of Patient",
+        "description": "Select Hobby Of Patient",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Select Hobby Of Patient",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/selectHobby"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/get-caretaker": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "Get Care Taker List",
+        "description": "Get Care Taker List",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Get Care Taker List",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/getCareTaker"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/get-allAssessmentMobile": {
+      "post": {
+        "tags": ["Patient Module"],
+        "summary": "Get Assessment List for user",
+        "description": "Get Assessment",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Get Assessment",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/getAssessment"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/get-assessmentQuestion": {
+      "post": {
+        "tags": ["Patient Module"],
+        "summary": "Get Assessment Question List for user",
+        "description": "Get Question",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Get Question",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/getQuestion"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/get-all-chat": {
+      "post": {
+        "tags": ["Patient Module"],
+        "summary": "Get all chat List",
+        "description": "Get all chat List",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Get all chat List",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/getChatHistrory"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/get-playlist-point": {
+      "post": {
+        "tags": ["Patient Module"],
+        "summary": "Get Playlist point List",
+        "description": "Get PlayList point",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Get Play List",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/getPlaylistPoint"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/get-cbt-catelog": {
+      "get": {
+        "tags": ["Patient Module"],
+        "summary": "Get CBT Catelogy List",
+        "description": "Get CBT Catelogy",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/get-cbt-courses": {
+      "post": {
+        "tags": ["Patient Module"],
+        "summary": "Get CBT Courses List",
+        "description": "Get CBT Courses",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Get CBT Courses",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/getCBTCourses"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/get-playlist": {
+      "post": {
+        "tags": ["Patient Module"],
+        "summary": "Get Playlist List",
+        "description": "Get PlayList",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Get Play List",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/getPlaylist"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/get-activitylist": {
+      "post": {
+        "tags": ["Patient Module"],
+        "summary": "Get Activity List",
+        "description": "Get Activity",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Get Play List",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/getactivityList"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/edit-user": {
+      "post": {
+        "tags": ["Common Module"],
+        "summary": "Edit User Detail",
+        "description": "Edit User Detail",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Edit User Detail",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/editUserDetails"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/request-appointnment": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "Request Appointment",
+        "description": "Request Appointment",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Request Appointment",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/requestAppointment"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/get-patient-reminders": {
+      "post": {
+        "tags": ["Patient Module"],
+        "summary": "Get Patient Reminder",
+        "description": "Get Patient Reminder",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Get Patient Reminder",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/getPatientReminder"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/book-appointment": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "Book Appointment",
+        "description": "Book Appointment",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Book Appointment",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/bookAppointment"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/get-specialization": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "Get Specialization",
+        "description": "Get Specialization",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Get Specialization",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/getspecialization"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/get-appointment": {
+      "post": {
+        "tags": ["Patient Module"],
+        "summary": "Get Appointment",
+        "description": "Get Appointment",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Get Appointment",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/getAppointment"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/get-completed-appointment": {
+      "post": {
+        "tags": ["Patient Module"],
+        "summary": "Get Appointment",
+        "description": "Get Appointment",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Get Appointment",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/getCompletedAppointment"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/edit-care-detail": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "Edit Care Member Detail",
+        "description": "Edit Care Member Detail",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Edit Care Member Detail",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/editCareMemberDetail"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/read-notification": {
+      "post": {
+        "tags": ["User Module"],
+        "summary": "Read Notification",
+        "description": "Read Notification",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Read Notification",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/readNotification"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/assign-caretaker": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "Assign Care Taker To Patient",
+        "description": "Assign Care Taker To Patient",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Assign Care Taker To Patient",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/assignCareTeam"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/unassign-caretaker": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "UnAssign Care Taker To Patient",
+        "description": "UnAssign Care Taker To Patient",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "UnAssign Care Taker To Patient",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/unassignCareTeam"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/delete-care-member": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "Delete Care Member",
+        "description": "Delete Care Member",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Delete Care Member",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/deleteCareTaker"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/send-response": {
+      "post": {
+        "tags": ["Patient Module"],
+        "summary": "Send Response",
+        "description": "Send Response",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Send Response",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/sendResponse"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/delete-user": {
+      "post": {
+        "tags": ["Patient Module"],
+        "summary": "Delete Patient",
+        "description": "Delete Patient",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Delete Patient",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/deletePatient"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/get-medicines": {
+      "post": {
+        "tags": ["Hospital Module"],
+        "summary": "Get Medicine List",
+        "description": "Get Medicine List",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Get Medicine List",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/getMedicineList"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#definitions/appResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/errorResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "_comment": "Complex objects have schema definitions",
+  "definitions": {
+    "appResponse": {
+      "required": "message",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "code": {
+          "type": "number"
+        }
+      }
+    },
+    "errorResponse": {
+      "required": "message",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "registerUser": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "middleName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string"
+        },
+        "address_id": {
+          "type": "string"
+        },
+        "profession": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "phoneCountry": {
+          "type": "string"
+        }
+      }
+    },
+    "editUserDetails": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "user_id": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "middleName": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "phoneCountry": {
+          "type": "string"
+        }
+      }
+    },
+    "editCareMemberDetail": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "user_id": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "middleName": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "phoneCountry": {
+          "type": "string"
+        }
+      }
+    },
+    "login": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "deviceToken": {
+          "type": "string"
+        }
+      }
+    },
+    "getPatientCareTeam": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        }
+      }
+    },
+    "getpatientcompletedrequest": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        }
+      }
+    },
+    "deleteCareTaker": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        }
+      }
+    },
+    "sendResponse": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        },
+        "program_id": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "responseid": {
+          "type": "string"
+        }
+      }
+    },
+    "deletePatient": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        }
+      }
+    },
+    "readNotification": {
+      "type": "object",
+      "properties": {
+        "notification_id": {
+          "type": "string"
+        }
+      }
+    },
+    "getpatientpendingrequest": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        }
+      }
+    },
+    "getAssessment": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        },
+        "search_txt": {
+          "type": "string"
+        }
+      }
+    },
+    "getQuestion": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        },
+        "assessment_id": {
+          "type": "string"
+        }
+      }
+    },
+    "getChatHistrory": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        }
+      }
+    },
+    "getPlaylistPoint": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        },
+        "request_for": {
+          "type": "string"
+        },
+        "page": {
+          "type": "number"
+        },
+        "limit": {
+          "type": "number"
+        }
+      }
+    },
+    "getCBTCourses": {
+      "type": "object",
+      "properties": {
+        "courseId": {
+          "type": "string"
+        },
+        "courseInstance": {
+          "type": "string"
+        }
+      }
+    },
+    "getPlaylist": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        }
+      }
+    },
+    "getactivityList": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        },
+        "course_id": {
+          "type": "number"
+        },
+        "course_status": {
+          "type": "boolean"
+        }
+      }
+    },
+    "getPatientReminder": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        }
+      }
+    },
+    "getCareTeamAppointments": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        }
+      }
+    },
+    "getCareTeamOwnAppointments": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        }
+      }
+    },
+    "getCareTeamCompletedAppointments": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        }
+      }
+    },
+    "getAppointment": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        }
+      }
+    },
+    "getCompletedAppointment": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        }
+      }
+    },
+    "getMedicineList": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "getCareTaker": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        }
+      }
+    },
+    "assignCareTeam": {
+      "type": "object",
+      "properties": {
+        "patient_id": {
+          "type": "string"
+        },
+        "careteams_id": {
+          "type": "object"
+        }
+      }
+    },
+    "unassignCareTeam": {
+      "type": "object",
+      "properties": {
+        "patient_id": {
+          "type": "string"
+        },
+        "careteams_id": {
+          "type": "object"
+        }
+      }
+    },
+    "requestAppointment": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        },
+        "caretaker_id": {
+          "type": "string"
+        },
+        "starttime": {
+          "type": "string"
+        },
+        "sessionType": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        },
+        "endtime": {
+          "type": "string"
+        },
+        "isMorning": {
+          "type": "string"
+        },
+        "isAfternoon": {
+          "type": "string"
+        },
+        "isEvening": {
+          "type": "string"
+        },
+        "morningstarttime": {
+          "type": "string"
+        },
+        "moriningendtime": {
+          "type": "string"
+        },
+        "afternoonstarttime": {
+          "type": "string"
+        },
+        "afternoonendtime": {
+          "type": "string"
+        },
+        "eveningstarttime": {
+          "type": "string"
+        },
+        "eveningendtime": {
+          "type": "string"
+        }
+      }
+    },
+    "bookAppointment": {
+      "type": "object",
+      "properties": {
+        "patient_user_id": {
+          "type": "string"
+        },
+        "caretaker_id": {
+          "type": "string"
+        },
+        " appointment_request_id": {
+          "type": "string"
+        },
+        "appointment_date": {
+          "type": "string"
+        },
+        "appointment_time": {
+          "type": "string"
+        },
+        "appointment_end_time": {
+          "type": "string"
+        }
+      }
+    },
+    "getAppointmentRequest": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        }
+      }
+    },
+    "generateVideoToken": {
+      "type": "object",
+      "properties": {
+        "userName": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "appointmentId": {
+          "type": "string"
+        }
+      }
+    },
+    "addspecialization": {
+      "type": "object",
+      "properties": {
+        "specialization": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "getspecialization": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "sendMissCallNotification": {
+      "type": "object",
+      "properties": {
+        "caretaker_name": {
+          "type": "string"
+        },
+        "caretaker_user_id": {
+          "type": "string"
+        },
+        "patient_name": {
+          "type": "string"
+        },
+        "patient_user_id": {
+          "type": "string"
+        },
+        "appointment_request_id": {
+          "type": "string"
+        }
+      }
+    },
+
+    "getNotification": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "user_id": {
+          "type": "string"
+        }
+      }
+    },
+
+    "addCareTaker": {
+      "type": "object",
+      "properties": {
+        "specialization_id": {
+          "type": "string"
+        },
+        "user_id": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "qualification": {
+          "type": "string"
+        },
+        "registrationNumber": {
+          "type": "string"
+        },
+        "rating": {
+          "type": "string"
+        },
+        "hospital_id": {
+          "type": "string"
+        }
+      }
+    },
+    "adduseraddress": {
+      "type": "object",
+      "properties": {
+        "houseNo": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "zip": {
+          "type": "string"
+        },
+        "street2": {
+          "type": "string"
+        },
+        "user_id": {
+          "type": "string"
+        },
+        "addressType": {
+          "type": "string"
+        }
+      }
+    },
+    "getpatients": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        }
+      }
+    },
+    "getPatientDetail": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        }
+      }
+    },
+    "addHobbies": {
+      "type": "object",
+      "properties": {
+        "hobby": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        }
+      }
+    },
+    "getHobbies": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "getDosage": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        }
+      }
+    },
+    "addMedicine": {
+      "type": "object",
+      "properties": {
+        "medicineName": {
+          "type": "string"
+        }
+      }
+    },
+    "addDosage": {
+      "type": "object",
+      "properties": {
+        "medicine_id": {
+          "type": "string"
+        },
+        "user_id": {
+          "type": "string"
+        },
+        "medType": {
+          "type": "string"
+        },
+        "frequency": {
+          "type": "string"
+        },
+        "startdate": {
+          "type": "string"
+        },
+        "enddate": {
+          "type": "string"
+        },
+        "dateTime": {
+          "type": "string"
+        },
+        "details": {
+          "type": "string"
+        },
+        "sideEffectDetails": {
+          "type": "string"
+        },
+        "bufferTime": {
+          "type": "string"
+        },
+        "reminderTime": {
+          "type": "string"
+        },
+        "isMorning": {
+          "type": "boolean"
+        },
+        "isAfternoon": {
+          "type": "boolean"
+        },
+        "isEvening": {
+          "type": "boolean"
+        }
+      }
+    },
+    "addHospitalDetail": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        },
+        "hospitalName": {
+          "type": "string"
+        },
+        "address_id": {
+          "type": "string"
+        },
+        "registerationNumber": {
+          "type": "string"
+        },
+        "rating": {
+          "type": "number"
+        },
+        "description": {
+          "type": "string"
+        },
+        "hospitalValidFrom": {
+          "type": "string"
+        },
+        "hospitalValidTo": {
+          "type": "string"
+        }
+      }
+    },
+    "addPatientHospital": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        },
+        "hospital_id": {
+          "type": "string"
+        }
+      }
+    },
+    "checkTiming": {
+      "type": "object",
+      "properties": {
+        "patient_user_id": {
+          "type": "string"
+        },
+        "appointment_request_id": {
+          "type": "string"
+        },
+        "user_timezone": {
+          "type": "string"
+        },
+        "user_time": {
+          "type": "string"
+        }
+      }
+    },
+    "sendLink": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      }
+    },
+    "sendVideoCallNotification": {
+      "type": "object",
+      "properties": {
+        "appointment_request_id": {
+          "type": "string"
+        },
+        "patient_name": {
+          "type": "string"
+        },
+        "caretaker_name": {
+          "type": "string"
+        },
+        "hospital_user_id": {
+          "type": "string"
+        },
+        "caretaker_user_id": {
+          "type": "string"
+        },
+        "patient_user_id": {
+          "type": "string"
+        },
+        "appointment_time": {
+          "type": "string"
+        },
+        "appointment_date": {
+          "type": "string"
+        }
+      }
+    },
+    "getSymptoms": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        }
+      }
+    },
+    "getProgramAnalysis": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        }
+      }
+    },
+    "getSymptom": {
+      "type": "object",
+      "properties": {
+        "program_id": {
+          "type": "string"
+        }
+      }
+    },
+    "changeUserPrefrence": {
+      "type": "object",
+      "properties": {
+        "isAssessmentNotification": {
+          "type": "string"
+        },
+        "user_id": {
+          "type": "string"
+        },
+        "isAppointmentNotification": {
+          "type": "string"
+        },
+        "isMedicationNotification": {
+          "type": "string"
+        }
+      }
+    },
+    "getSideEffect": {
+      "type": "object",
+      "properties": {
+        "program_id": {
+          "type": "string"
+        }
+      }
+    },
+    "updateSymptom": {
+      "type": "object",
+      "properties": {
+        "symptom_id": {
+          "type": "string"
+        },
+        "symptom": {
+          "type": "string"
+        }
+      }
+    },
+    "updateSideEffect": {
+      "type": "object",
+      "properties": {
+        "sideeffect_id": {
+          "type": "string"
+        },
+        "sideeffect": {
+          "type": "string"
+        }
+      }
+    },
+    "DeleteSymptom": {
+      "type": "object",
+      "properties": {
+        "symptom_id": {
+          "type": "string"
+        }
+      }
+    },
+    "DeleteSideEffect": {
+      "type": "object",
+      "properties": {
+        "sideeffect_id": {
+          "type": "string"
+        }
+      }
+    },
+    "declineVideoCall": {
+      "type": "object",
+      "properties": {
+        "appointment_request_id": {
+          "type": "string"
+        }
+      }
+    },
+    "addSymptom": {
+      "type": "object",
+      "properties": {
+        "program_id": {
+          "type": "string"
+        },
+        "symptom": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "string"
+        }
+      }
+    },
+    "addSideEffect": {
+      "type": "object",
+      "properties": {
+        "program_id": {
+          "type": "string"
+        },
+        "sideeffect": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "string"
+        }
+      }
+    },
+    "getHospitalTiming": {
+      "type": "object",
+      "properties": {
+        "hospital_id": {
+          "type": "string"
+        }
+      }
+    },
+    "selectHobby": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        },
+        "hobby_id": {
+          "type": "string"
+        }
+      }
+    },
+    "hospitalSetting": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        },
+        "isMorning": {
+          "type": "string"
+        },
+        "isAfternoon": {
+          "type": "string"
+        },
+        "isEvening": {
+          "type": "string"
+        },
+        "morningstarttime": {
+          "type": "string"
+        },
+        "moriningendtime": {
+          "type": "string"
+        },
+        "afternoonstarttime": {
+          "type": "string"
+        },
+        "afternoonendtime": {
+          "type": "string"
+        },
+        "eveningstarttime": {
+          "type": "string"
+        },
+        "eveningendtime": {
+          "type": "string"
+        },
+        "range": {
+          "type": "string"
+        }
+      }
+    },
+    "updateHospitalTiming": {
+      "type": "object",
+      "properties": {
+        "isMorning": {
+          "type": "string"
+        },
+        "isAfternoon": {
+          "type": "string"
+        },
+        "isEvening": {
+          "type": "string"
+        },
+        "morningstarttime": {
+          "type": "string"
+        },
+        "moriningendtime": {
+          "type": "string"
+        },
+        "afternoonstarttime": {
+          "type": "string"
+        },
+        "afternoonendtime": {
+          "type": "string"
+        },
+        "eveningstarttime": {
+          "type": "string"
+        },
+        "eveningendtime": {
+          "type": "string"
+        },
+        "range": {
+          "type": "string"
+        }
+      }
+    },
+    "assignHobbyToPatient": {
+      "type": "object",
+      "properties": {
+        "patient_id": {
+          "type": "string"
+        },
+        "hobby_id": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
