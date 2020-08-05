@@ -21,7 +21,7 @@
     "dotenv": "^8.2.0",
     "ejs": "^3.0.1",
     "express": "~4.16.1",
-    "express-fileupload": "^1.1.6",
+    "express-fileupload": "^1.1.9",
     "fcm-node": "^1.5.2",
     "fcm-notification": "^2.0.0",
     "file-upload": "0.0.0",
